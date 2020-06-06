@@ -22,6 +22,7 @@ export default class App extends Component {
     return (
       <>
         <h1>Welcome to Blue Ocean!</h1>
+        <h2>Kody wuz here</h2>
         <ul>
           {this.state.seaCreatures.map((creature, index) => (
             <li key={index}>{creature}</li>
