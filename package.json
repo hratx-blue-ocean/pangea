@@ -4,7 +4,7 @@
   "description": "One language one world . . .",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install && cd ./client && npm install ; cd ../server && npm install",
+    "setup": "npm install && cd ./client && npm install ; cd ../server && npm install && cd .. npm run-script start",
     "test": "cd ./client && npm test",
     "launch": "cd ./client && npm run-script build && npm run-script server",
     "launch:client": "cd server && nodemon bin/www",
