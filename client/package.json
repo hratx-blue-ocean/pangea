@@ -1,5 +1,5 @@
 {
-  "name": "blue-ocean-client",
+  "name": "Pangea",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "server": "webpack-dev-server --mode development --open --hot"
   },
   "author": "",
-  "license": "ISC",
+  "license": "48",
   "dependencies": {
     "@babel/runtime": "^7.4.4",
     "axios": "^0.18.0",
