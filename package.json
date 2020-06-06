@@ -1,25 +1,27 @@
 {
-  "name": "blue-ocean-rewrite",
-  "version": "1.0.0",
-  "description": "Congratulations and welcome to your first day at Blue Ocean! We are literally an underwater agile software development company.",
+  "name": "Pangea",
+  "version": "0.0.1",
+  "description": "One language one world . . .",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install && cd ./client && npm install ; cd ../server && npm install",
+    "setup": "npm install && cd ./client && npm install ; cd ../server && npm install && cd .. npm run-script start",
     "test": "cd ./client && npm test",
-    "launch": "cd ./client && npm run-script build && cd ../server && node bin/www && cd ../client webpack-dev-server &",
+    "launch": "cd ./client && npm run-script build && npm run-script server",
+    "launch:client": "cd server && nodemon bin/www",
     "lint:client": "cd ./client && ./node_modules/.bin/eslint \"src/**/*.{js,jsx}\" && echo 'Your code has passed the linting guidelines' || echo 'Please fix the errors listed above'",
-    "lint:server": "cd ./server && ../node_modules/.bin/eslint \"routes/**/*.js\" 2>/dev/null && echo 'Your code has passed the linting guidelines' || echo 'Please fix the errors listed above'"
+    "lint:server": "cd ./server && ../node_modules/.bin/eslint \"routes/**/*.js\" 2>/dev/null && echo 'Your code has passed the linting guidelines' || echo 'Please fix the errors listed above'",
+    "start": "npm-run-all --parallel launch launch:client"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/selder18/blue-ocean-rewrite.git"
+    "url": "git+https://github.com/hratx-blue-ocean/pangea.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/selder18/blue-ocean-rewrite/issues"
+    "url": "https://https://github.com/hratx-blue-ocean/pangea/issues"
   },
-  "homepage": "https://github.com/selder18/blue-ocean-rewrite#readme",
+  "homepage": "https://https://github.com/hratx-blue-ocean/pangea#readme",
   "dependencies": {
     "dotenv": "^8.0.0"
   },
@@ -35,6 +37,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.5.0",
-    "eslint-plugin-standard": "^4.0.0"
+    "eslint-plugin-standard": "^4.0.0",
+    "npm-run-all": "^4.1.5"
   }
 }
