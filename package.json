@@ -4,13 +4,16 @@
   "description": "One language one world . . .",
   "main": "index.js",
   "scripts": {
-    "setup": "npm install && cd ./client && npm install ; cd ../server && npm install && cd .. npm run-script start",
+    "setup": "npm install && cd ./client && npm install ; cd ../server && npm install",
     "test": "cd ./client && npm test",
     "launch": "cd ./client && npm run-script build && npm run-script server",
+    "launch:dev": "cd client && npm run-script build:dev",
+    "launch:dev1": "cd client && npm run-script server",
     "launch:client": "cd server && nodemon bin/www",
     "lint:client": "cd ./client && ./node_modules/.bin/eslint \"src/**/*.{js,jsx}\" && echo 'Your code has passed the linting guidelines' || echo 'Please fix the errors listed above'",
     "lint:server": "cd ./server && ../node_modules/.bin/eslint \"routes/**/*.js\" 2>/dev/null && echo 'Your code has passed the linting guidelines' || echo 'Please fix the errors listed above'",
-    "start": "npm-run-all --parallel launch launch:client"
+    "start": "npm-run-all --parallel launch launch:client",
+    "start:dev": "npm-run-all --parallel launch:dev launch:dev1 launch:client"
   },
   "repository": {
     "type": "git",
@@ -23,7 +26,8 @@
   },
   "homepage": "https://https://github.com/hratx-blue-ocean/pangea#readme",
   "dependencies": {
-    "dotenv": "^8.0.0"
+    "dotenv": "^8.0.0",
+    "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
