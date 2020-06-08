@@ -66,3 +66,6 @@ typings/
 
 # Webpack
 bundle.js
+
+#database config
+config.js
