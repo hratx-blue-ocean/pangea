@@ -27,6 +27,7 @@
   "homepage": "https://https://github.com/hratx-blue-ocean/pangea#readme",
   "dependencies": {
     "dotenv": "^8.0.0",
+    "mongoose": "^5.9.18",
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
