@@ -9,6 +9,9 @@ mongoose.connect(config, {useNewUrlParser: true})
 .catch(err => {
   console.log("Could not connect to database!")
 })
+//db = "Users"
+    //Collection = "accounts" use userSchema
+    //Collection = "messages" use messageSchema
 
 var userSchema = new mongoose.Schema({
   userId: Number,
@@ -21,7 +24,7 @@ var userSchema = new mongoose.Schema({
   convoIds: Object
 })
 
-var convoSchema = new mongoose.Schema({
+var messageSchema = new mongoose.Schema({
     convoId: Number,
     messages: [
       {userID, timestamp, message}
@@ -35,3 +38,11 @@ var convoSchema = new mongoose.Schema({
     ]
    */
 })
+
+const users = mongoose.model('user', userSchema);
+const messages = mongoose.model('message', messageSchema);
+
+module.exports = {
+  users,
+  messages
+}
