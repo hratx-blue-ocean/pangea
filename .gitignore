@@ -70,3 +70,9 @@ bundle.js
 #database config
 config.js
 mongoConfig.js
+
+#terraform vars
+terraform.tfvars
+terraform.tfstate.backup
+terraform.tfstate
+*/mykey*
