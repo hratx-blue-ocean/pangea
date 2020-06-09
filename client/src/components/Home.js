@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import Login from './Login';
 import Signup from './Signup';

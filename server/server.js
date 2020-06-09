@@ -4,6 +4,7 @@ const port = 9000;
 const path = require('path');
 const queries = require('./database/queries');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 
 
@@ -14,25 +15,52 @@ app.use((_, res, next) => {
     next();
 });
 
-app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, "../client/public")))
+app.use(bodyParser.json())
 
 // ***** USER API'S *****
+// finds user *WORKS* did work ,but deleted for the authentication and login route.. 
 
-// finds user *WORKS*
-  app.get('/api/findUser', function (req, res) {
-      queries.findUser(req.body.username, (err,data) => {
+//signup route
+app.post('/api/signup', (req, res) => {
+  // check if the user exists
+  queries.findUser(req.body.username, (err,data) => {
+    if (err) {
+      res.status(500).send('Error finding user')
+    } else if (data.length === 0) {
+      // if email doesn't exist, create user
+      queries.createUser(req.body, (error, results) => {
+        if (error) {
+          res.status(500).send('Error creating account');
+        } else {
+          res.send(results);
+        }
+      })
+    } else {
+      //if user does exist send 401.
+      res.status(401).send('Email already in use');
+    }
+  })
+});
+
+// login route
+  app.get('/api/login/:username/:password', (req, res) => {
+      
+      queries.findUser(req.params.username, (err,data) => {
         if (data.length === 0 || err) {
           res.status(500).send("error finding user in server")
         } else {
-          console.log("user found!");
-          res.send(data);
+          if (data[0].password === req.params.password) {
+            res.send(data);
+          } else {
+            res.status(401).send('Unauthenticated');
+          }
         }
       })
     });
 
   //front end decide way to pass data req? *WORKS*
-  app.post('/api/createUser', function (req, res) {
+  app.post('/api/createUser', (req, res) => {
     console.log(req.body)
     if (req.body !== undefined) {
       queries.createUser(req.body, (err,data) => {

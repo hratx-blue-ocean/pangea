@@ -20,7 +20,8 @@ class Signup extends Component {
       currentLocation: '',
       isLoading: true,
       token: '',
-      signUpError: ''
+      signUpError: '',
+      failedSignup: false
     }
     
     this.handleShow = this.handleShow.bind(this);
@@ -53,21 +54,16 @@ class Signup extends Component {
       username: this.state.email,
       langFluent: this.state.langFluent,
       langInterested: this.state.langInterested,
-      password: this.state.password
+      password: this.state.password,
+      onlineStatus: true
     }
     
-    // axios.post('/signup', body)
-    //   .then(res => {
-    //     // check if res.data[0] === 'User already exists'
-    //       //handle
-    //     // else redirect to user profile
-    //   }
-    //   )
-    //   .catch(err => {
-    //     console.log(err, 'failed to signup in client')
-    //   })
-    
-    this.props.login();
+    axios.post('/api/signup', body)
+      .then(() => this.props.login())
+      .catch(err => {
+        console.error(err, 'Error creating user');
+        this.setState({failedSignup: true})
+      })
   }
 
   selectLanguage(reason, lang) {
@@ -86,6 +82,7 @@ class Signup extends Component {
 
           <Modal.Body>
             <form onSubmit={this.handleSubmit}>
+              {this.state.failedSignup ? <Alert variant={'danger'}>Email is already in use</Alert> : null}
               <input type='text' placeholder='email' value={this.state.email} onChange={e => this.setState({email: e.target.value})}></input>
               {!this.state.validEmail ? <Alert variant={'danger'}>Please enter a valid email address</Alert> : null}
               <input type='password' placeholder ='password' value={this.state.password} onChange={e => this.setState({password: e.target.value})}></input>
