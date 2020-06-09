@@ -69,4 +69,4 @@ bundle.js
 
 #database config
 config.js
-mongoConfig
+mongoConfig.js
