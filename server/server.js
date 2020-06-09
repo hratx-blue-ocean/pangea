@@ -1,9 +1,9 @@
-const createError = require('http-errors');
-const logger = require('morgan');
 const express = require('express');
 const app = express();
+const port = 9000;
+const path = require('path');
+/*TODO: import queries
 const queries = require(../)
-/*TODO: import queries 
 */
 
 // open up CORS
@@ -13,43 +13,74 @@ app.use((_, res, next) => {
     next();
 });
 
-app.use(logger('dev'));
+app.use(express.static(path.join(__dirname, "../client/public")))
 
-//front end decide way to pass data req?
-app.get('/api/createUser', function (req, res) {
+app.get('/api/findUser', function (req, res) {
+    queries.findUser(err,data) => {
+      if (err) {
+        console.log("error finding user in server:", err)
+        res.send("error finding user in server")
+      }
+      console.log("user found!");
+      res.send(data);
+    })
+  });
+
+  //front end decide way to pass data req?
+  app.get('/api/createUser', function (req, res) {
     queries.createUser(err,data) => {
       if (err) {
         console.log("error creating user in route:", err)
         res.send("error getting all users data in server")
       }
-      res.send("user created");
+      console.log("user created!");
+      res.send(data);
     })
   });
-//need to finish
-app.get('/api/createUser', function (req, res) {
-    queries.createUser(err,data) => {
+
+  app.get('/api/updateUserConvos', function (req, res) {
+    queries.updateUserConvos(err,data) => {
       if (err) {
-        console.log("error creating user in route:", err)
-        res.send("error getting all users data in server")
+        console.log("error updating user convos in server:", err)
+        res.send("error updating user convos in server")
       }
-      res.send("user created");
+      console.log("user convo updated!");
+      res.send(data);
     })
   });
 
-// execute before all routes to catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    next(createError(404));
+  app.get('/api/getConvo', function (req, res) {
+    queries.getConvo(err,data) => {
+      if (err) {
+        console.log("error getting convo in server:", err)
+        res.send("error getting convo in server")
+      }
+      console.log("convo gotten!");
+      res.send(data);
+    })
+  });
+  //TODO: HANDLE DATA input, pass to querey
+  app.get('/api/createConvo', function (req, res) {
+    queries.createConvo(err,data) => {
+      if (err) {
+        console.log("error creating convo in server:", err)
+        res.send("error creating convo in server")
+      }
+      console.log("convo created!");
+      res.send(data);
+    })
+  });
+
+  app.get('/api/updateMessages', function (req, res) {
+    queries.updateMessages(err,data) => {
+      if (err) {
+        console.log("error updating messeges in server:", err)
+        res.send("error updating messages in server")
+      }
+      console.log("messages updated!");
+      res.send(data);
+  });
+
+app.listen(port, function() {
+  console.log(`listening on port ${port}`);
 });
-
-// error handler
-app.use(function (err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-});
-
-module.exports = app;
