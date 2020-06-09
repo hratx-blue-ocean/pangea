@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import validator from 'email-validator';
+import axios from 'axios';
 
 import LangSelect from './LangSelect';
 
@@ -45,6 +46,37 @@ class Signup extends Component {
         show: false,
       });
     }
+  }
+
+  signup() {
+    const body = {
+      username: this.state.email,
+      langFluent: this.state.langFluent,
+      langInterested: this.state.langInterested,
+      password: this.state.password
+    }
+/*
+var userSchema = new mongoose.Schema({
+  userId: Number,
+  username: String,
+  langFluent: String,
+  langInterested: String,
+  profile: Object,
+  onlineStatus: Boolean,
+  password: String,
+  convoIds: Object
+}) */
+
+    axios.post('/signup', body)
+      .then(res => {
+        // check if res.data[0] === 'User already exists'
+          //handle
+        // else redirect to user profile
+      }
+      )
+      .catch(err => {
+        console.log(err, 'failed to signup in client')
+      })
   }
 
   selectLanguage(reason, lang) {

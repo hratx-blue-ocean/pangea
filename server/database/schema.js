@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const config = require('./config');
+//const config = require('./config');
 
 
-mongoose.connect(config, {useNewUrlParser: true})
+mongoose.connect('mongodb://localhost:27017/pangaea', {useNewUrlParser: true})
 .then(() => {
   console.log("Database connected!")
 })
@@ -27,7 +27,7 @@ var userSchema = new mongoose.Schema({
 var messageSchema = new mongoose.Schema({
     convoId: Number,
     messages: [
-      {userID, timestamp, message}
+      {userID: Number, timestamp: Date, message: String}
     ]
   /*
   to access with query: if convoID matches, pull entire convo object
