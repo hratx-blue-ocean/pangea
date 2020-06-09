@@ -16,8 +16,8 @@ mongoose.connect(config, {useNewUrlParser: true})
 var userSchema = new mongoose.Schema({
   userId: Number,
   username: String,
-  langFluent: Object,
-  langInterested: Object,
+  langFluent: Array,
+  langInterested: Array,
   profile: Object,
   onlineStatus: Boolean,
   password: String,
