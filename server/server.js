@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 9000;
 const path = require('path');
+const queries = require('./database/queries');
 /*TODO: import queries
 const queries = require(../)
 */
@@ -16,7 +17,7 @@ app.use((_, res, next) => {
 app.use(express.static(path.join(__dirname, "../client/public")))
 
 app.get('/api/findUser', function (req, res) {
-    queries.findUser(err,data) => {
+    queries.findUser(req.query.id, (err,data) => {
       if (err) {
         console.log("error finding user in server:", err)
         res.send("error finding user in server")
@@ -28,7 +29,7 @@ app.get('/api/findUser', function (req, res) {
 
   //front end decide way to pass data req?
   app.get('/api/createUser', function (req, res) {
-    queries.createUser(err,data) => {
+    queries.createUser(req.query.id, (err,data) => {
       if (err) {
         console.log("error creating user in route:", err)
         res.send("error getting all users data in server")
@@ -39,7 +40,7 @@ app.get('/api/findUser', function (req, res) {
   });
 
   app.get('/api/updateUserConvos', function (req, res) {
-    queries.updateUserConvos(err,data) => {
+    queries.updateUserConvos(req.query.id, (err,data) => {
       if (err) {
         console.log("error updating user convos in server:", err)
         res.send("error updating user convos in server")
@@ -50,7 +51,7 @@ app.get('/api/findUser', function (req, res) {
   });
 
   app.get('/api/getConvo', function (req, res) {
-    queries.getConvo(err,data) => {
+    queries.getConvo(req.query.id, (err,data) => {
       if (err) {
         console.log("error getting convo in server:", err)
         res.send("error getting convo in server")
@@ -59,9 +60,10 @@ app.get('/api/findUser', function (req, res) {
       res.send(data);
     })
   });
+
   //TODO: HANDLE DATA input, pass to querey
   app.get('/api/createConvo', function (req, res) {
-    queries.createConvo(err,data) => {
+    queries.createConvo(req.query.id, (err,data) => {
       if (err) {
         console.log("error creating convo in server:", err)
         res.send("error creating convo in server")
@@ -71,16 +73,17 @@ app.get('/api/findUser', function (req, res) {
     })
   });
 
-  app.get('/api/updateMessages', function (req, res) {
-    queries.updateMessages(err,data) => {
-      if (err) {
-        console.log("error updating messeges in server:", err)
-        res.send("error updating messages in server")
-      }
-      console.log("messages updated!");
-      res.send(data);
-  });
-
+app.get('/api/updateMessages', function (req, res) {
+    queries.updateMessages(req.query.id, (err, data) => {
+        if (err) {
+            console.log("error updating messeges in server:", err);
+            res.send("error updating messages in server");
+        }
+        console.log("messages updated!");
+        res.send(data);
+    });
+})
+    
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });

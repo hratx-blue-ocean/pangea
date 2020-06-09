@@ -12,6 +12,7 @@
   "dependencies": {
     "debug": "^4.1.1",
     "express": "^4.16.4",
+    "mongoose": "^5.9.18",
     "nyc": "^14.1.0"
   },
   "devDependencies": {
