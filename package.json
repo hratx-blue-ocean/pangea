@@ -28,6 +28,7 @@
   "dependencies": {
     "dotenv": "^8.0.0",
     "mongoose": "^5.9.18",
+    "react-bootstrap": "^1.0.1",
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {

@@ -69,3 +69,6 @@ bundle.js
 
 #database config
 config.js
+
+#profile images
+client/public/profile_files
