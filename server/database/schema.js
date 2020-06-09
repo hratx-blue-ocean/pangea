@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
-const config = require('./mongoConfig');
+const mongoConfig = require('./mongoConfig');
 
-
-mongoose.connect(`${config}`, {useNewUrlParser: true})
+mongoose.connect(mongoConfig.mongoConf, {useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {
   console.log("Database connected!")
 })
 .catch(err => {
-  console.log("Could not connect to database!")
+  console.log("Could not connect to database!",err)
 })
 //db = "Users"
-    //Collection = "accounts" use userSchema
+    //Collection = "users" use userSchema
     //Collection = "messages" use messageSchema
 
 var userSchema = new mongoose.Schema({
@@ -24,16 +23,8 @@ var userSchema = new mongoose.Schema({
 })
 
 var messageSchema = new mongoose.Schema({
-<<<<<<< HEAD
     convoId: Number,
     messages: Object
-=======
-    messages: [
-      // each object is one user, multiple users === multiple objects
-      {userID: String, timestamp: String, message:String}
-      //{userId: secondUser, timestamp: secondTime, message: secondMessage},
-    ]
->>>>>>> d0ebb2c950d99cf0f2ba1928d139797d19f57d58
   /*
   to access with query: if convoID matches, pull entire convo object
      messages: [

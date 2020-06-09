@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const {users, messages} = require('./schema');
 
 // returns the requested user object: see schema.js for format

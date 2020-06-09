@@ -1,3 +1,3 @@
 module.exports = {
-    mongoConf: "mongodb+srv://blueocean:blueocean@cluster0-ftw1t.mongodb.net/Users?retryWrites=true&w=majority"
+    mongoConf: "mongodb+srv://blueocean:blueocean@cluster0-ftw1t.mongodb.net/pangea?retryWrites=true&w=majority"
 };
