@@ -1,34 +1,29 @@
 const mongoose = require('mongoose');
-const config = require('./config');
+const mongoConfig = require('./mongoConfig');
 
-
-mongoose.connect(config, {useNewUrlParser: true})
+mongoose.connect(mongoConfig.mongoConf, {useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {
   console.log("Database connected!")
 })
 .catch(err => {
-  console.log("Could not connect to database!")
+  console.log("Could not connect to database!",err)
 })
 //db = "Users"
-    //Collection = "accounts" use userSchema
+    //Collection = "users" use userSchema
     //Collection = "messages" use messageSchema
 
 var userSchema = new mongoose.Schema({
-  userId: Number,
   username: String,
-  langFluent: Object,
-  langInterested: Object,
+  langFluent: Array,
+  langInterested: Array,
   profile: Object,
   onlineStatus: Boolean,
   password: String,
-  convoIds: Object
-})
+  convoIds: Array
+}, {collection: 'users'})
 
 var messageSchema = new mongoose.Schema({
-    convoId: Number,
-    messages: [
-      {userID, timestamp, message}
-    ]
+    messages: Object
   /*
   to access with query: if convoID matches, pull entire convo object
      messages: [
@@ -39,8 +34,8 @@ var messageSchema = new mongoose.Schema({
    */
 })
 
-const users = mongoose.model('user', userSchema);
-const messages = mongoose.model('message', messageSchema);
+const users = mongoose.model('users', userSchema);
+const messages = mongoose.model('messages', messageSchema);
 
 module.exports = {
   users,
