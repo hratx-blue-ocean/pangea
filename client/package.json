@@ -13,7 +13,7 @@
   "license": "48",
   "dependencies": {
     "@babel/runtime": "^7.4.4",
-    "axios": "^0.18.0",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.0",
     "cors": "^2.8.5",
@@ -23,7 +23,8 @@
     "path": "^0.12.7",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.1",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
