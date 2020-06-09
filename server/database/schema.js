@@ -14,20 +14,20 @@ mongoose.connect(config, {useNewUrlParser: true})
     //Collection = "messages" use messageSchema
 
 var userSchema = new mongoose.Schema({
-  userId: Number,
   username: String,
-  langFluent: Object,
-  langInterested: Object,
+  langFluent: Array,
+  langInterested: Array,
   profile: Object,
   onlineStatus: Boolean,
   password: String,
-  convoIds: Object
+  convoIds: Array
 })
 
 var messageSchema = new mongoose.Schema({
-    convoId: Number,
     messages: [
-      {userID, timestamp, message}
+      // each object is one user, multiple users === multiple objects
+      {userID: String, timestamp: String, message:String}
+      //{userId: secondUser, timestamp: secondTime, message: secondMessage},
     ]
   /*
   to access with query: if convoID matches, pull entire convo object
