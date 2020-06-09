@@ -2,9 +2,11 @@ const createError = require('http-errors');
 const logger = require('morgan');
 const express = require('express');
 const app = express();
+const queries = require(../)
+/*TODO: import queries 
+*/
 
-
-// open up CORS 
+// open up CORS
 app.use((_, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -13,11 +15,28 @@ app.use((_, res, next) => {
 
 app.use(logger('dev'));
 
-// You can place your routes here, feel free to refactor:
-const { example } = require('./routes');
-app.use('/api/example', example)
+//front end decide way to pass data req?
+app.get('/api/createUser', function (req, res) {
+    queries.createUser(err,data) => {
+      if (err) {
+        console.log("error creating user in route:", err)
+        res.send("error getting all users data in server")
+      }
+      res.send("user created");
+    })
+  });
+//need to finish
+app.get('/api/createUser', function (req, res) {
+    queries.createUser(err,data) => {
+      if (err) {
+        console.log("error creating user in route:", err)
+        res.send("error getting all users data in server")
+      }
+      res.send("user created");
+    })
+  });
 
-// catch 404 and forward to error handler
+// execute before all routes to catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
 });
