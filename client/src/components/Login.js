@@ -11,7 +11,7 @@ const Login = props => {
   const handleClose = () => setShow(false);
 
   const handleSubmit = () => {
-    setShow(false);
+    props.login();
   }
 
   return (

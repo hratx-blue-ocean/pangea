@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.js';
-// import './index.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Home from './components/Home';
+import Profile from './components/Profile';
+
+ReactDOM.render((
+  <Router>
+    <Switch>
+      <Route exact path='/' component={Home}/>
+      <Route path='/user' component={Profile}/>
+    </Switch>
+  </Router>
+) , document.getElementById('root'));

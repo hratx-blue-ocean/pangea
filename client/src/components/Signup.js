@@ -42,9 +42,9 @@ class Signup extends Component {
       this.setState({validEmail: false})
     } else {
       this.setState({
-        validEmail: true,
-        show: false,
+        validEmail: true
       });
+      this.signup();
     }
   }
 
@@ -55,28 +55,19 @@ class Signup extends Component {
       langInterested: this.state.langInterested,
       password: this.state.password
     }
-/*
-var userSchema = new mongoose.Schema({
-  userId: Number,
-  username: String,
-  langFluent: String,
-  langInterested: String,
-  profile: Object,
-  onlineStatus: Boolean,
-  password: String,
-  convoIds: Object
-}) */
-
-    axios.post('/signup', body)
-      .then(res => {
-        // check if res.data[0] === 'User already exists'
-          //handle
-        // else redirect to user profile
-      }
-      )
-      .catch(err => {
-        console.log(err, 'failed to signup in client')
-      })
+    
+    // axios.post('/signup', body)
+    //   .then(res => {
+    //     // check if res.data[0] === 'User already exists'
+    //       //handle
+    //     // else redirect to user profile
+    //   }
+    //   )
+    //   .catch(err => {
+    //     console.log(err, 'failed to signup in client')
+    //   })
+    
+    this.props.login();
   }
 
   selectLanguage(reason, lang) {
