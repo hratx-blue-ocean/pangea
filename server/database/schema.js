@@ -20,10 +20,9 @@ var userSchema = new mongoose.Schema({
   onlineStatus: Boolean,
   password: String,
   convoIds: Array
-})
+}, {collection: 'users'})
 
 var messageSchema = new mongoose.Schema({
-    convoId: Number,
     messages: Object
   /*
   to access with query: if convoID matches, pull entire convo object
@@ -35,8 +34,8 @@ var messageSchema = new mongoose.Schema({
    */
 })
 
-const users = mongoose.model('user', userSchema);
-const messages = mongoose.model('message', messageSchema);
+const users = mongoose.model('users', userSchema);
+const messages = mongoose.model('messages', messageSchema);
 
 module.exports = {
   users,
