@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import validator from 'email-validator';
+import axios from 'axios';
 
 import LangSelect from './LangSelect';
 
@@ -41,10 +42,32 @@ class Signup extends Component {
       this.setState({validEmail: false})
     } else {
       this.setState({
-        validEmail: true,
-        show: false,
+        validEmail: true
       });
+      this.signup();
     }
+  }
+
+  signup() {
+    const body = {
+      username: this.state.email,
+      langFluent: this.state.langFluent,
+      langInterested: this.state.langInterested,
+      password: this.state.password
+    }
+    
+    // axios.post('/signup', body)
+    //   .then(res => {
+    //     // check if res.data[0] === 'User already exists'
+    //       //handle
+    //     // else redirect to user profile
+    //   }
+    //   )
+    //   .catch(err => {
+    //     console.log(err, 'failed to signup in client')
+    //   })
+    
+    this.props.login();
   }
 
   selectLanguage(reason, lang) {
