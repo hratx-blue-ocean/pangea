@@ -1,9 +1,10 @@
 import React from 'react';
-
+import UserSearch from './UserSearch.js'
 const Profile = props => {
   return (
     <div>
-      Profile page
+      fjfjfjf
+        <UserSearch />
     </div>
   )
 }

@@ -8,8 +8,8 @@ import Profile from './components/Profile';
 ReactDOM.render((
   <Router>
     <Switch>
-      <Route exact path='/' component={Home}/>
-      <Route path='/user' component={Profile}/>
+      <Route exact path='/' component={Profile}/>
+      <Route path='/user' component={Home}/>
     </Switch>
   </Router>
 ) , document.getElementById('root'));
