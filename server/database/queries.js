@@ -13,6 +13,19 @@ const findUser = (username, callback) => {
   })
 };
 
+// returns all users that are fluent in specified language
+const findUserByLang = (lang, callback) => {
+  users.find({langFluent: { $all: [lang]}}).lean().exec((err, data) => {
+    if (err) {
+      console.log('Could not find user with language in DB', err)
+      callback(err, null)
+    } else {
+      console.log(data._id);
+      callback(null, data);
+    }
+  })
+};
+
 // saves user object in database: see schema.js for format
 const createUser = (user, callback) => {
   console.log(user);
@@ -23,15 +36,17 @@ const createUser = (user, callback) => {
       console.log("Could not create new user")
       callback(err, null)
     } else {
+      console.log(data._id)
       callback(null, data)
     }
   })
 };
 
 //updates the user object conversation ID that the user is a part of
+// can just be ID number
 const updateUserConvos = (username, convoId, callback) => {
   console.log(username, convoID);
-  users.findOneAndUpdate({username: username}, convoId, {useFindAndModify: false}, (err, data) => {
+  users.findOneAndUpdate({username: username}, { $push: {"convoId": convoId} }, {useFindAndModify: false}, (err, data) => {
     if (err) {
       console.log("Could not update user convoId in DB")
       callback(err, null)
@@ -43,7 +58,7 @@ const updateUserConvos = (username, convoId, callback) => {
 
 // gets conversation between two users by ID
 const getConvo = (convoId, callback) => {
-  messages.find({convoId: convoId}).lean().exec((err, data) => {
+  messages.find({"_id": `ObjectId(${convoId})`}).lean().exec((err, data) => {
     if (err) {
       console.log("could not find message ID in database")
       callback(err, null)
@@ -54,6 +69,7 @@ const getConvo = (convoId, callback) => {
 };
 
 // TODO: handle placement of data in database
+// must be in schema format, convo input is an object
 const createConvo = (convo, callback) => {
   //front end sends convo (convo is data of who both users are)
   console.log(convo)
@@ -73,7 +89,7 @@ const updateMessages = (convoId, messageData, callback) => {
   // expecting conversation id, and updated messages.
   // may need to set on interval to send messages to database
   console.log(convoId, messageData);
-  messages.findOneAndUpdate({convoId: convoId}, messageData, {useFindAndModify: false}, (err, data) => {
+  messages.findOneAndUpdate({"_id": `ObjectId(${convoId})`}, messageData, {useFindAndModify: false}, (err, data) => {
     if (err) {
       console.log("could not update messages in database")
       callback(err, null)
@@ -88,5 +104,6 @@ module.exports ={
   getConvo,
   createUser,
   findUser,
-  updateMessages
+  updateMessages,
+  findUserByLang
 }
