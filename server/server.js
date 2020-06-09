@@ -4,8 +4,6 @@ const port = 9000;
 const path = require('path');
 const queries = require('./database/queries');
 const bodyParser = require('body-parser');
-const cors = require('cors');
-
 
 
 // open up CORS
