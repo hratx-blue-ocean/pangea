@@ -1,12 +1,11 @@
 {
-  "name": "Pangea",
+  "name": "Pangaea",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack -d",
     "build:dev": "webpack -d -w",
-
     "test": "jest",
     "server": "webpack-dev-server --mode development --open --hot"
   },
@@ -16,11 +15,14 @@
     "@babel/runtime": "^7.4.4",
     "axios": "^0.18.0",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.0",
     "cors": "^2.8.5",
+    "email-validator": "^2.0.4",
     "express": "^4.16.4",
     "node-fetch": "^2.5.0",
     "path": "^0.12.7",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
