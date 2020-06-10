@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import Calendar from './Calendar';
 import PenPals from './PenPals';
 import Chat from './Chat';
+import './Profile.css';
 
 
 const Profile = props => {

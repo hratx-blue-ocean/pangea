@@ -8,9 +8,17 @@ class Chat extends React.Component {
 
     this.inbox = undefined;
     let currentUser;
-    const currentTalkjsUser = localStorage.getItem('currentTalkjsUser');
+    const currentTalkjsUser = {
+      id: "4",
+      name: "Grace Loveday",
+      email: "grace@sample.com",
+      photoUrl: "https://randomuser.me/api/portraits/women/44.jpg",
+      role: "Member",
+      info: "Product Designer at Google",
+      welcomeMessage: "Hey there! Love to chat :-)"
+  };
     if (currentTalkjsUser) {
-        currentUser = JSON.parse(currentTalkjsUser)
+        currentUser = currentTalkjsUser
     }
 
     this.state = {
@@ -20,7 +28,8 @@ class Chat extends React.Component {
 
   componentDidMount() {
     Talk.ready
-    .then(() => {
+      .then(() => {
+      console.log(this.state.currentUser)
       const me = new Talk.User(this.state.currentUser);
       
       if (!window.talkSession) {

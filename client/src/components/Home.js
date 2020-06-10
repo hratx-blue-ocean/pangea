@@ -10,7 +10,7 @@ export default class Home extends Component {
     this.state = {
       login: false,
       signup: false,
-      loggedIn: false
+      loggedIn: true
     };
 
     this.profile = this.profile.bind(this);

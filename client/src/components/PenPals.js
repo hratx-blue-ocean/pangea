@@ -1,15 +1,24 @@
 import React from 'react';
 import Talk from 'talkjs';
 import { sampleUsers } from './sampleUsers';
+import './PenPals.css';
 
 
 class PenPals extends React.Component {
   constructor(props) {
     super(props); 
     let currentUser;
-    const currentTalkjsUser = localStorage.getItem('currentTalkjsUser');
+    const currentTalkjsUser = {
+      id: "4",
+      name: "Grace Loveday",
+      email: "grace@sample.com",
+      photoUrl: "https://randomuser.me/api/portraits/women/44.jpg",
+      role: "Member",
+      info: "Product Designer at Google",
+      welcomeMessage: "Hey there! Love to chat :-)"
+  };
     if (currentTalkjsUser) {
-        currentUser = JSON.parse(currentTalkjsUser)
+        currentUser = currentTalkjsUser
     }
     this.state = {
         currentUser
@@ -62,8 +71,9 @@ class PenPals extends React.Component {
             {currentUser &&
               <div>
                 <picture className="current-user-picture">
-                    <img alt={currentUser.name} src={currentUser.photoUrl} />
-                </picture>
+              <img alt={currentUser.name} src={currentUser.photoUrl} />
+            </picture>
+            {currentUser.info}
                 <div className="current-user-info">
                     <h3>{currentUser.name}</h3>
                     <p>{currentUser.description}</p>
