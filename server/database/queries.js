@@ -56,26 +56,26 @@ const updateUserConvos = (username, convoId, callback) => {
   })
 };
 
-// gets conversation between two users by ID
-const getConvo = (convoId, callback) => {
-  messages.find({"_id": `ObjectId(${convoId})`}).lean().exec((err, data) => {
-    if (err) {
-      console.log("could not find message ID in database")
-      callback(err, null)
-    } else {
-      callback(null, data)
-    }
-  })
+// create event for user
+const createEvent = (userId, callback) => {
+  console.log(userId.userId);
+  users.findOneAndUpdate({ "_id": userId.userId }, {$push:{profile: userId.events.events}}, {useFindAndModify: false})
+    .lean()
+    .exec((err, data) => {
+      if (err) {
+        console.log("could not create users event in database")
+        callback(err, null)
+      } else {
+        callback(null, data)
+      }
+    })
 };
 
 // TODO: handle placement of data in database
 // must be in schema format, convo input is an object
-const createConvo = (convo, callback) => {
+const getEvent = (convo, callback) => {
   //front end sends convo (convo is data of who both users are)
-  console.log(convo)
-  let doc = new messages(convo);
-
-  doc.save((err, data) => {
+  users.find((err, data) => {
     if (err) {
       console.log("could not save conversation data in DB")
       callback(err, null)
@@ -100,8 +100,8 @@ const updateMessages = (convoId, messageData, callback) => {
 };
 
 module.exports ={
-  createConvo,
-  getConvo,
+  createEvent,
+  getEvent,
   createUser,
   findUser,
   updateMessages,
