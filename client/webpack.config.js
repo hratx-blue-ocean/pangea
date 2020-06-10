@@ -23,7 +23,15 @@ module.exports = {
         test: /\.css$/,
         include: SRC_DIR,
         loader: 'css-loader'
-      }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
     ]
   },
   devServer: {
