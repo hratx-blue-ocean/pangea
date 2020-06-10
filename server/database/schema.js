@@ -17,6 +17,7 @@ var userSchema = new mongoose.Schema({
   langFluent: Array,
   langInterested: Array,
   profile: Array,
+  events: Array,
   onlineStatus: Boolean,
   password: String,
   convoIds: Array,

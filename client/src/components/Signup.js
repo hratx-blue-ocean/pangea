@@ -59,7 +59,9 @@ class Signup extends Component {
     }
     
     axios.post('/api/signup', body)
-      .then(() => this.props.login())
+      .then(( {data} ) => {
+        this.props.login(data)
+      })
       .catch(err => {
         console.error(err, 'Error creating user');
         this.setState({failedSignup: true})

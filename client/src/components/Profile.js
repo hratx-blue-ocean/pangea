@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+
 import Calendar from './Calendar';
 import PenPals from './PenPals';
 import Chat from './Chat';
+
 import './Profile.css';
 
 
+//the props come from home login, react router redirect. here userData is state passed from props
 const Profile = props => {
+  const [userData] = useState(props.location.state.userData)
+  
   return (
     <div>
       <Router>
@@ -24,7 +29,8 @@ const Profile = props => {
         <Route path="/penpals" component={PenPals}/>
         <Route path="/chat" component={Chat}/>
       </Router>
-      <Calendar />
+      
+      <Calendar userId={userData._id} events={userData.events}/>
     </div>
   )
 }
