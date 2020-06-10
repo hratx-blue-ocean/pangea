@@ -3,6 +3,7 @@ import '../main.scss';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import axios from 'axios';
 
 import CalEvent from './CalEvent';
 
@@ -10,10 +11,8 @@ class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [
-        { title: 'event 1', displayEventTime: true, allDay: false, start: '2020-06-21T12:30:00', end: '2020-06-21T13:30:00'},
-        { title: 'event 2', start: '2020-06-21T16:30:00' }
-      ],
+      userId: props.userId,
+      events: props.events,
       addEvent: false
     }
 
@@ -23,7 +22,6 @@ class Calendar extends Component {
   }
 
   handleDateClick(arg) {
-    console.log(arg);
     this.setState({
       addEvent: true,
       selectedDate: arg.dateStr
@@ -35,10 +33,19 @@ class Calendar extends Component {
   }
 
   addEvent(event) {
-    this.setState(prevState => ({
-      events: [...prevState.events, event],
-      addEvent: false
-    }))
+    const newEvent = {
+      userId: this.state.userId,
+      event: event
+    }
+
+    axios.post('/api/createEvent', newEvent)
+      .then(() => {
+        this.setState(prevState => ({
+          events: [...prevState.events, event],
+          addEvent: false
+        }))
+      })
+      .catch(err => console.error(err, 'Could not add event'));
   }
 
 

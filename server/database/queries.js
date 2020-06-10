@@ -58,8 +58,8 @@ const updateUserConvos = (username, convoId, callback) => {
 
 // create event for user
 const createEvent = (userId, callback) => {
-  console.log(userId.userId);
-  users.findOneAndUpdate({ "_id": userId.userId }, {$push:{profile: userId.events.events}}, {useFindAndModify: false})
+  //console.log(userId.event);
+  users.findOneAndUpdate({ "_id": userId.userId }, {$push:{events: userId.event}}, {useFindAndModify: false})
     .lean()
     .exec((err, data) => {
       if (err) {

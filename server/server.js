@@ -86,21 +86,8 @@ app.post('/api/signup', (req, res) => {
     })
   });
 
-  // Creates event for a user
-          //input wanted 
-          //{
-          // userId: "userId",
-          // events:{
-          //   timeZone: '',
-          //     events: [{
-          //       id: '',
-          //       title: '',
-          //       start:''
-          //   }]
-          // }
-        // }
   app.post('/api/createEvent', function (req, res) {
-    console.log(req.body, 'made you look')
+    // console.log(req.body, 'made you look')
     queries.createEvent(req.body, (err,data) => {
       if (err) {
         console.log("error creating event in server:", err)
