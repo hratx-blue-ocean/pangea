@@ -59,37 +59,37 @@ class PenPals extends React.Component {
     return (
       <div className="users">
           <div className="current-user-container">
-              {currentUser &&
-                  <div>
-                      <picture className="current-user-picture">
-                          <img alt={currentUser.name} src={currentUser.photoUrl} />
-                      </picture>
-                      <div className="current-user-info">
-                          <h3>{currentUser.name}</h3>
-                          <p>{currentUser.description}</p>
-                      </div>
-                  </div>
-              }
+            {currentUser &&
+              <div>
+                <picture className="current-user-picture">
+                    <img alt={currentUser.name} src={currentUser.photoUrl} />
+                </picture>
+                <div className="current-user-info">
+                    <h3>{currentUser.name}</h3>
+                    <p>{currentUser.description}</p>
+                </div>
+              </div>
+            }
           </div>
 
           <div className="users-container"> 
               <ul>
-                  { sampleUsers.map(user => 
-                      <li key={user.id} className="user">
-                          <picture className="user-picture">
-                              <img src={user.photoUrl} alt={`${user.name}`} />
-                          </picture>
-                          <div className="user-info-container">
-                              <div className="user-info">
-                                  <h4>{user.name}</h4>
-                                  <p>{user.info}</p>
-                              </div>
-                              <div className="user-action">
+                  {sampleUsers.map(user => 
+                    <li key={user.id} className="user">
+                        <picture className="user-picture">
+                            <img src={user.photoUrl} alt={`${user.name}`} />
+                        </picture>
+                        <div className="user-info-container">
+                            <div className="user-info">
+                                <h4>{user.name}</h4>
+                                <p>{user.info}</p>
+                            </div>
+                            <div className="user-action">
 
-                                  <button onClick={(userId) => this.handleClick(user.id)}>Message</button>
-                              </div>
-                          </div>
-                      </li>
+                                <button onClick={(userId) => this.handleClick(user.id)}>Message</button>
+                            </div>
+                        </div>
+                    </li>
                   )}
               </ul>
 
