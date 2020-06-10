@@ -19,7 +19,8 @@ var userSchema = new mongoose.Schema({
   profile: Array,
   onlineStatus: Boolean,
   password: String,
-  convoIds: Array
+  convoIds: Array,
+  imageLink: String,
 }, {collection: 'users'})
 
 var messageSchema = new mongoose.Schema({
