@@ -24,7 +24,8 @@
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "talkjs": "^0.14.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
