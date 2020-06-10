@@ -13,7 +13,7 @@ app.use((_, res, next) => {
     next();
 });
 
-app.use(express.static(path.join(__dirname, "../client/public")))
+app.use(express.static(path.join(__dirname, "../client/public/")))
 app.use(bodyParser.json())
 
 // ***** USER API'S *****
