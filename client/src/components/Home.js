@@ -10,14 +10,18 @@ export default class Home extends Component {
     this.state = {
       login: false,
       signup: false,
-      loggedIn: false
+      loggedIn: false,
+      userData: {}
     };
 
     this.profile = this.profile.bind(this);
   }
 
-  profile() {
-    this.setState({loggedIn: true});
+  profile(userData) {
+    this.setState({
+      loggedIn: true,
+      userData: userData
+    });
   }
 
   render() {
@@ -29,7 +33,7 @@ export default class Home extends Component {
         <Login login={this.profile} />
         <Signup login={this.profile} />
         
-        {this.state.loggedIn ? <Redirect to='/user' /> : null}
+        {this.state.loggedIn ? <Redirect to={{ pathname: '/user', state: {userData: this.state.userData} }} /> : null}
       </div>
     )
   }
