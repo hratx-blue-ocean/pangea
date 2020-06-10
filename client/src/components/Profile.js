@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-//import Login from './Components/Login';
+import Calendar from './Calendar';
 import PenPals from './PenPals';
 import Chat from './Chat';
 
 
-const Profile = (props) => {
+const Profile = props => {
   return (
     <div>
       <Router>
@@ -23,6 +23,7 @@ const Profile = (props) => {
         <Route path="/penpals" component={PenPals}/>
         <Route path="/chat" component={Chat}/>
       </Router>
+      <Calendar />
     </div>
   )
 }

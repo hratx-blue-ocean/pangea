@@ -16,10 +16,11 @@ var userSchema = new mongoose.Schema({
   username: String,
   langFluent: Array,
   langInterested: Array,
-  profile: Object,
+  profile: Array,
   onlineStatus: Boolean,
   password: String,
-  convoIds: Array
+  convoIds: Array,
+  imageLink: String,
 }, {collection: 'users'})
 
 var messageSchema = new mongoose.Schema({
