@@ -1,9 +1,11 @@
 import React from 'react';
 
+import Calendar from './Calendar';
+
 const Profile = props => {
   return (
     <div>
-      Profile page
+      <Calendar />
     </div>
   )
 }
