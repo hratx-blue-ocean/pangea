@@ -12,6 +12,8 @@ const Login = props => {
   const [validEmail, setValidEmail] = useState(true);
   const [authError, setAuthError] = useState(false);
 
+  
+
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
@@ -38,9 +40,9 @@ const Login = props => {
 
   return (
     <>
-      <Button variant='primary' onClick={handleShow}>Login</Button>
+      <Button variant='outline-light' id='custombtn'  onClick={handleShow}>Login</Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}> 
         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>

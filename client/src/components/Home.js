@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import Image from 'react-bootstrap/Image';
+import './Home.css'
 
 import Login from './Login';
 import Signup from './Signup';
@@ -26,13 +28,14 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div id='landing'>
         <h1>PANGAEA</h1>
         <h6>A WORLD INTERCONNECTED THROUGH LANGUAGE</h6>
-
-        <Login login={this.profile} />
-        <Signup login={this.profile} />
         
+        <div id='buttons'>
+          <Login login={this.profile} id='login' />
+          <Signup login={this.profile} id='signup' />
+        </div>
         {this.state.loggedIn ? <Redirect to={{ pathname: '/user', state: {userData: this.state.userData} }} /> : null}
       </div>
     )

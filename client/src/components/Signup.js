@@ -75,7 +75,7 @@ class Signup extends Component {
   render() {
     return (
       <>
-        <Button variant='primary' onClick={this.handleShow}>Signup</Button>
+        <Button variant='outline-light' id='custombtn' onClick={this.handleShow}>Signup</Button>
         
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>

@@ -52,13 +52,15 @@ class Calendar extends Component {
   render() {
     return (
       <>
-        <FullCalendar 
-          defaultView='dayGridMonth' 
-          plugins={[ dayGridPlugin, interactionPlugin]} 
-          selectable='true'
-          dateClick={this.handleDateClick}
-          events={this.state.events}
-        />
+        <div id='calendar'>
+          <FullCalendar 
+            defaultView='dayGridMonth' 
+            plugins={[ dayGridPlugin, interactionPlugin]} 
+            selectable='true'
+            dateClick={this.handleDateClick}
+            events={this.state.events}
+          />
+        </div>
         <CalEvent 
           show={this.state.addEvent} 
           close={this.closeEventModal} 
