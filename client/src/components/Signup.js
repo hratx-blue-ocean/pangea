@@ -98,7 +98,7 @@ class Signup extends Component {
   render() {
     return (
       <>
-        <Button variant='outline-light' id='custombtn' onClick={this.handleShow}>Signup</Button>
+        <Button variant='outline-light' id='custombtn' onClick={e => this.handleShow(e)}>Signup</Button>
         
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
@@ -144,7 +144,6 @@ class Signup extends Component {
                     <Form.Control required as='select' defaultValue={this.state.langFluent} onChange={e => this.setState({langFluent: e.target.value})}>
                       {this.state.langs.map((lang, i) => <option key={i}>{lang}</option>)}
                     </Form.Control>
-                    <Form.Control.Feedback type='invalid'>Please select a language</Form.Control.Feedback>
                   </Form.Group>
                 </Col>
                 <Col>
@@ -153,7 +152,6 @@ class Signup extends Component {
                     <Form.Control required as='select' defaultValue={this.state.langInterested} onChange={e => this.setState({langInterested: e.target.value})}>
                       {this.state.langs.map((lang, i) => <option key={i}>{lang}</option>)}
                     </Form.Control>
-                    <Form.Control.Feedback type='invalid'>Please select a language</Form.Control.Feedback>
                   </Form.Group>
                 </Col>
               </Row>
@@ -162,7 +160,7 @@ class Signup extends Component {
 
           <Modal.Footer>
             <Button variant='light' id='custombtn' style={{color: 'black', marginRight: '5px'}} onClick={this.handleClose}>Cancel</Button>
-            <Button variant='light' id='custombtn' style={{color: 'black'}} type='submit' onClick={this.handleSubmit}>Signup</Button>
+            <Button variant='light' id='custombtn' style={{color: 'black'}} type='submit' onClick={e => this.handleSubmit(e)}>Signup</Button>
           </Modal.Footer>
           
         </Modal>
