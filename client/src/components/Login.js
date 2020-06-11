@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import validator from 'email-validator';
+import validator from 'email-validator';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
@@ -17,22 +17,25 @@ const Login = props => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
+  const validateForm = () => {
+    if (validator.validate(email) && password.length > 0) {
+      return true;
+    }
+    return false;
+  }
+
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     if (form.checkValidity() === false) {
       event.stopPropagation();
     }
-
+    
     setValidated(true);
-    login();
 
-    // if (!validator.validate(email)) {
-    //   setValidEmail(false);
-    // } else {
-    //   setValidEmail(true);
-    //   login();
-    // }
+    if (validateForm()) {
+      login();
+    }
   }
   
   const login = () => {
@@ -60,8 +63,8 @@ const Login = props => {
           {authError ? <Alert variant={'danger'}>Invalid email and/or password</Alert> : null}
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group controlId='formEmail'>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control required type='email' placeholder='Enter email' onChange={e => setEmail(e.target.value)} />
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control required type='email' placeholder='Enter Email' onChange={e => setEmail(e.target.value)} />
               <Form.Control.Feedback type='invalid'>Please enter a valid email</Form.Control.Feedback>
             </Form.Group>
 

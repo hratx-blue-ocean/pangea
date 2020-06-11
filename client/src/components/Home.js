@@ -32,7 +32,7 @@ export default class Home extends Component {
         <h1>PANGAEA</h1>
         <h6>A WORLD INTERCONNECTED THROUGH LANGUAGE</h6>
         
-        <div id='buttons'>
+        <div id='buttons'> 
           <Login login={this.profile} id='login' />
           <Signup login={this.profile} id='signup' />
         </div>
