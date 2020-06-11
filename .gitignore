@@ -5,7 +5,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
-.travis.yml
 
 # Runtime data
 pids
@@ -67,3 +66,12 @@ typings/
 
 # Webpack
 bundle.js
+
+#database config
+config.js
+mongoConfig.js
+
+#terraform
+terraform.tfvars
+terraform.tfstate
+terraform/terraform.tfvars

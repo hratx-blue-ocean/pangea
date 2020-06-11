@@ -1,19 +1,21 @@
 {
-  "name": "Pangea",
+  "name": "Pangaea",
   "version": "0.0.1",
   "description": "One language one world . . .",
   "main": "index.js",
   "scripts": {
     "setup": "npm install && cd ./client && npm install ; cd ../server && npm install",
     "test": "cd ./client && npm test",
-    "launch": "cd ./client && npm run-script build && npm run-script server",
+    "launch": "cd ./client && npm run-script build",
     "launch:dev": "cd client && npm run-script build:dev",
     "launch:dev1": "cd client && npm run-script server",
-    "launch:client": "cd server && nodemon bin/www",
+    "launch:client": "cd server && nodemon server.js",
+    "launch:clientDocker": "cd server && node server.js",
     "lint:client": "cd ./client && ./node_modules/.bin/eslint \"src/**/*.{js,jsx}\" && echo 'Your code has passed the linting guidelines' || echo 'Please fix the errors listed above'",
     "lint:server": "cd ./server && ../node_modules/.bin/eslint \"routes/**/*.js\" 2>/dev/null && echo 'Your code has passed the linting guidelines' || echo 'Please fix the errors listed above'",
     "start": "npm-run-all --parallel launch launch:client",
-    "start:dev": "npm-run-all --parallel launch:dev launch:dev1 launch:client"
+    "start:dev": "npm-run-all --parallel launch:dev launch:client",
+    "start:devDocker": "npm-run-all --parallel launch:dev launch:clientDocker"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
   "homepage": "https://https://github.com/hratx-blue-ocean/pangea#readme",
   "dependencies": {
     "dotenv": "^8.0.0",
+    "mongoose": "^5.9.18",
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
@@ -35,7 +38,7 @@
     "eslint-config-react-app": "^4.0.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-flowtype": "^2.50.3",
-    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.1.1",
