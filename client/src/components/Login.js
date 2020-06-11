@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
-import validator from 'email-validator';
+// import validator from 'email-validator';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 
 const Login = props => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [validEmail, setValidEmail] = useState(true);
+  // const [validEmail, setValidEmail] = useState(true);
   const [authError, setAuthError] = useState(false);
-
-  
+  const [validated, setValidated] = useState();
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  const handleSubmit = () => {
-    if (!validator.validate(email)) {
-      setValidEmail(false);
-    } else {
-      setValidEmail(true);
-      login();
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    event.preventDefault();
+    if (form.checkValidity() === false) {
+      event.stopPropagation();
     }
+
+    setValidated(true);
+    login();
+
+    // if (!validator.validate(email)) {
+    //   setValidEmail(false);
+    // } else {
+    //   setValidEmail(true);
+    //   login();
+    // }
   }
   
   const login = () => {
@@ -48,18 +57,24 @@ const Login = props => {
         </Modal.Header>
 
         <Modal.Body>
-          <form onSubmit={handleSubmit}>
-            {authError ? <Alert variant={'danger'}>Invalid email and/or password</Alert> : null}
-            <input type='text' placeholder='email' value={email} onChange={e => setEmail(e.target.value)}></input>
-            {!validEmail ? <Alert variant={'danger'}>Please enter a valid email address</Alert> : null}
-            <input type='password' placeholder ='password' value={password} onChange={e => setPassword(e.target.value)}></input>
-          </form>
-        </Modal.Body>
+          {authError ? <Alert variant={'danger'}>Invalid email and/or password</Alert> : null}
+          <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form.Group controlId='formEmail'>
+              <Form.Label>Email address</Form.Label>
+              <Form.Control required type='email' placeholder='Enter email' onChange={e => setEmail(e.target.value)} />
+              <Form.Control.Feedback type='invalid'>Please enter a valid email</Form.Control.Feedback>
+            </Form.Group>
 
-        <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>Cancel</Button>
-          <Button variant='primary' onClick={handleSubmit}>Login</Button>
-        </Modal.Footer>
+            <Form.Group controlId='formPassword'>
+              <Form.Label>Password</Form.Label>
+              <Form.Control required type='password' placeholder='Password' onChange={e => setPassword(e.target.value)} />
+              <Form.Control.Feedback type='invalid'>Password required</Form.Control.Feedback>
+            </Form.Group>
+
+            <Button variant='light' id='custombtn' style={{color: 'black', marginRight: '5px'}} onClick={handleClose}>Cancel</Button>
+            <Button variant='light' id='custombtn' style={{color: 'black'}} type='submit' onClick={handleSubmit}>Login</Button>
+          </Form>
+        </Modal.Body>
       </Modal>
     </>
   )
