@@ -17,8 +17,8 @@ const Profile = props => {
       <Router>
         <nav className="navbar">
           <ul className="navbar-list">
-            <li className="navbar-item">
-                <Link to="/penpals" className="navbar-link">My Pen Pals</Link>
+            <li className="navbar-item">   
+                <Link to={{ pathname: "/penpals", state: {userData} }} >My Pen Pals</Link>
             </li>
             <li className="navbar-item">
                 <Link to="/chat" className="navbar-link">Chat</Link>

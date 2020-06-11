@@ -2,6 +2,11 @@ import React from 'react';
 import Talk from 'talkjs';
 import { sampleUsers } from './sampleUsers';
 import './PenPals.css';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+
+import LangSelect from './LangSelect';
 
 
 class PenPals extends React.Component {
@@ -24,7 +29,6 @@ class PenPals extends React.Component {
         currentUser
     }
   }
-
   handleClick(userId) {
  
     /* Retrieve the two users that will participate in the conversation */
@@ -63,9 +67,13 @@ class PenPals extends React.Component {
 
 
   render() {
+    console.log(this.props.location.state)
     const { currentUser } = this.state;
-
+     // can you see this?
     return (
+      <div>
+      
+
       <div className="users">
           <div className="current-user-container">
             {currentUser &&
@@ -107,6 +115,7 @@ class PenPals extends React.Component {
                   <div id="talkjs-container" style={{height: "300px"}}><i></i></div>
               </div>
           </div>
+      </div>
       </div>
     )
   }
