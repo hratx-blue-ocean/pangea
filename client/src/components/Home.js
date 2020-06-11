@@ -33,8 +33,8 @@ export default class Home extends Component {
         <h6>A WORLD INTERCONNECTED THROUGH LANGUAGE</h6>
         
         <div id='buttons'>
-          <Login login={this.profile} id='login' style={{color: '#e3e0cc'}}/>
-          <Signup login={this.profile} id='signup' style={{color: '#e3e0cc'}}/>
+          <Login login={this.profile} id='login' />
+          <Signup login={this.profile} id='signup' />
         </div>
         {this.state.loggedIn ? <Redirect to={{ pathname: '/user', state: {userData: this.state.userData} }} /> : null}
       </div>
