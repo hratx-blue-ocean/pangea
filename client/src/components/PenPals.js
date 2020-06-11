@@ -26,9 +26,38 @@ class PenPals extends React.Component {
         currentUser = currentTalkjsUser
     }
     this.state = {
-        currentUser
+        currentUser,
+        show: false
+    }
+    this.handleShow = this.handleShow.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.selectLanguage = this.selectLanguage.bind(this);
+  }
+
+  handleShow() {
+    this.setState({show: true})
+  }
+
+  handleClose() {
+    this.setState({show: false})
+  }
+
+  handleSubmit() {
+    if (!validator.validate(this.state.email)) {
+      this.setState({validEmail: false})
+    } else {
+      this.setState({
+        validEmail: true
+      });
+      this.signup();
     }
   }
+
+  selectLanguage(reason, lang) {
+    this.setState({[reason]: lang})
+  }
+
   handleClick(userId) {
  
     /* Retrieve the two users that will participate in the conversation */
@@ -72,12 +101,64 @@ class PenPals extends React.Component {
      // can you see this?
     return (
       <div>
-      
+      <>
+        
+        
+        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Signup</Modal.Title>
+          </Modal.Header>
 
+          <Modal.Body>
+            <form onSubmit={this.handleSubmit}>
+              {/* {this.state.failedSignup ? <Alert variant={'danger'}>Email is already in use</Alert> : null}
+              <input type='text' placeholder='email' value={this.state.email} onChange={e => this.setState({email: e.target.value})}></input>
+              {!this.state.validEmail ? <Alert variant={'danger'}>Please enter a valid email address</Alert> : null}
+              <input type='password' placeholder ='password' value={this.state.password} onChange={e => this.setState({password: e.target.value})}></input>
+              <div> 
+                <span>Select your proficient language: </span>
+                <LangSelect select={this.selectLanguage} reason={'langFluent'} />
+              </div> */}
+              {/* <div>
+                <span>Select the language you are learning: </span>
+                <LangSelect select={this.selectLanguage} reason={'langInterested'} />
+ */}
+                <form>
+              <div class="multiselect">
+                <div class="selectBox" onclick="showCheckboxes()">
+                  <select>
+                    <option>Select an option</option>
+                  </select>
+                  <div class="overSelect"></div>
+                </div>
+                <div id="checkboxes">
+                  <label for="one">
+                    <input type="checkbox" id="one" />First checkbox</label>
+                  <label for="two">
+                    <input type="checkbox" id="two" />Second checkbox</label>
+                  <label for="three">
+                    <input type="checkbox" id="three" />Third checkbox</label>
+                </div>
+              </div>
+            </form>
+            </form>
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant='secondary' onClick={this.handleClose}>Cancel</Button>
+            <Button variant='primary' onClick={this.handleSubmit}>Signup</Button>
+          </Modal.Footer>
+          
+        </Modal>
+      </>
+
+      
       <div className="users">
           <div className="current-user-container">
             {currentUser &&
+            
               <div>
+                
                 <picture className="current-user-picture">
               <img alt={currentUser.name} src={currentUser.photoUrl} />
             </picture>
@@ -85,6 +166,8 @@ class PenPals extends React.Component {
                 <div className="current-user-info">
                     <h3>{currentUser.name}</h3>
                     <p>{currentUser.description}</p>
+                    {/* <button>Edit Profile</button> */}
+                    <Button variant='outline-light' id='custombtn' onClick={this.handleShow}>Edit Profile</Button>
                 </div>
               </div>
             }

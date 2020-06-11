@@ -28,8 +28,11 @@
   },
   "homepage": "https://https://github.com/hratx-blue-ocean/pangea#readme",
   "dependencies": {
+    "bootstrap": "^4.5.0",
     "dotenv": "^8.0.0",
     "mongoose": "^5.9.18",
+    "popper.js": "^1.16.1",
+    "react-bootstrap-multiselect": "^2.4.1",
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
