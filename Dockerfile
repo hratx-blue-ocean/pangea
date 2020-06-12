@@ -11,24 +11,23 @@ WORKDIR /pangea
 ENV PATH /node_modules/.bin:$PATH
 
 COPY /package.json ./
-COPY /package-lock.json ./
+# COPY /package-lock.json ./
 
 COPY /client/package.json ./client
-COPY /client/package-lock.json ./client
+# COPY /client/package-lock.json ./client
 
 COPY /server/package.json ./server
-COPY /server/package-lock.json ./server
+# COPY /server/package-lock.json ./server
 
-#  install dependancies
-RUN cd .. npm run setup;
 
 #copy source code into container
-COPY . ./
+COPY . /pangea
 
-
-
+#  install dependancies
+RUN npm run setup;
 # select port
 EXPOSE 9000
 
+RUN npm rebuild node-sass@4.12.0
 # run commands to start app
-CMD ["npm", "run", "start:devDocker"]
+CMD ["npm", "run", "start:docker"]
