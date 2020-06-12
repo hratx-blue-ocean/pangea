@@ -12,7 +12,6 @@ export default class Home extends Component {
     this.state = {
       login: false,
       signup: false,
-      // loggedIn: true,
       loggedIn: false,
       userData: {}
     };
