@@ -111,36 +111,14 @@ class PenPals extends React.Component {
 
           <Modal.Body>
             <form onSubmit={this.handleSubmit}>
-              {/* {this.state.failedSignup ? <Alert variant={'danger'}>Email is already in use</Alert> : null}
-              <input type='text' placeholder='email' value={this.state.email} onChange={e => this.setState({email: e.target.value})}></input>
-              {!this.state.validEmail ? <Alert variant={'danger'}>Please enter a valid email address</Alert> : null}
-              <input type='password' placeholder ='password' value={this.state.password} onChange={e => this.setState({password: e.target.value})}></input>
-              <div> 
-                <span>Select your proficient language: </span>
-                <LangSelect select={this.selectLanguage} reason={'langFluent'} />
-              </div> */}
-              {/* <div>
-                <span>Select the language you are learning: </span>
-                <LangSelect select={this.selectLanguage} reason={'langInterested'} />
- */}
-                <form>
-              <div class="multiselect">
-                <div class="selectBox" onclick="showCheckboxes()">
-                  <select>
-                    <option>Select an option</option>
-                  </select>
-                  <div class="overSelect"></div>
-                </div>
-                <div id="checkboxes">
-                  <label for="one">
-                    <input type="checkbox" id="one" />First checkbox</label>
-                  <label for="two">
-                    <input type="checkbox" id="two" />Second checkbox</label>
-                  <label for="three">
-                    <input type="checkbox" id="three" />Third checkbox</label>
-                </div>
-              </div>
-            </form>
+              <Col>
+              <Form.Group>
+                <Form.Label>Learning Language</Form.Label>
+                    <Form.Control required as='select' defaultValue={userData.langInterested} onChange={e => this.setState({langInterested: e.target.value})}>
+                      {this.state.langs.map((lang, i) => <option key={i}>{lang}</option>)}
+                    </Form.Control>
+                  </Form.Group>
+              </Col>
             </form>
           </Modal.Body>
 
