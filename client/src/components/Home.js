@@ -5,7 +5,7 @@ import './Home.css'
 
 import Login from './Login';
 import Signup from './Signup';
-
+// possibly make the loggedin & login state more specific to its use
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -43,6 +43,8 @@ export default class Home extends Component {
 }
 
 /*
+
+Used for going backward through history SOURCE: React Router Docs
 import { useHistory } from "react-router-dom";
 
 function HomeButton() {

@@ -5,7 +5,6 @@ const path = require('path');
 const queries = require('./database/queries');
 const bodyParser = require('body-parser');
 
-
 // open up CORS
 app.use((_, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -17,7 +16,6 @@ app.use(express.static(path.join(__dirname, "../client/public/")))
 app.use(bodyParser.json())
 
 // ***** USER API'S *****
-// finds user *WORKS* did work ,but deleted for the authentication and login route.. 
 
 //signup route
 app.post('/api/signup', (req, res) => {
@@ -35,7 +33,7 @@ app.post('/api/signup', (req, res) => {
         }
       })
     } else {
-      //if user does exist send 401.
+      //if user does exists
       res.status(401).send('Email already in use');
     }
   })
@@ -57,24 +55,6 @@ app.post('/api/signup', (req, res) => {
       })
     });
 
-  //front end decide way to pass data req? *WORKS*
-  app.post('/api/createUser', (req, res) => {
-    console.log(req.body)
-    if (req.body !== undefined) {
-      queries.createUser(req.body, (err,data) => {
-        if (data.length === 0 || err) {
-          console.log("error creating user in route:", err)
-          res.status(500).send("error getting all users data in server")
-        } else {
-          console.log("user created!");
-          res.send(data);
-        }
-      })
-    } else {
-      res.status(500).send("invalid format")
-    }
-  });
-
   // Finds all users by fluent language *WORKS*
   app.get('/api/findUserByLang', (req, res) => {
     queries.findUserByLang(req.body.lang, (err, data) => {
@@ -87,18 +67,17 @@ app.post('/api/signup', (req, res) => {
   });
 
   app.post('/api/createEvent', function (req, res) {
-    // console.log(req.body, 'made you look')
     queries.createEvent(req.body, (err,data) => {
       if (err) {
         console.log("error creating event in server:", err)
         res.status(500).send("error creating event in server")
       } else {
-        console.log("event created!");
         res.send(data);
       }
     })
   });
 
+<<<<<<< HEAD
   // Finds all events for a user
   app.get('/api/getEvents', function (req, res) {
     console.log(req.body, 'made you look')
@@ -176,6 +155,8 @@ app.post('/api/signup', (req, res) => {
 // });
 
 
+=======
+>>>>>>> 892f200f6f10a86ec26dc7e06b60289bd945b1ee
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });

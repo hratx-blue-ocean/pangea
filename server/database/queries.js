@@ -1,4 +1,4 @@
-const {users, messages} = require('./schema');
+const {users} = require('./schema');
 
 // returns the requested user object: see schema.js for format
 const findUser = (username, callback) => {
@@ -20,7 +20,6 @@ const findUserByLang = (lang, callback) => {
       console.log('Could not find user with language in DB', err)
       callback(err, null)
     } else {
-      console.log(data);
       callback(null, data);
     }
   })
@@ -28,7 +27,6 @@ const findUserByLang = (lang, callback) => {
 
 // saves user object in database: see schema.js for format
 const createUser = (user, callback) => {
-  console.log("Queries mofo",user);
   let doc = new users(user);
 
   doc.save((err, data) => {
@@ -36,6 +34,7 @@ const createUser = (user, callback) => {
       console.log("Could not create new user")
       callback(err, null)
     } else {
+<<<<<<< HEAD
       console.log(data._id)
       callback(null, data)
     }
@@ -52,6 +51,8 @@ const updateUser = (username, userObj, callback) => {
       console.log("Could not update user in DB")
       callback(err, null)
     } else {
+=======
+>>>>>>> 892f200f6f10a86ec26dc7e06b60289bd945b1ee
       callback(null, data)
     }
   })
@@ -72,40 +73,14 @@ const createEvent = (userId, callback) => {
     })
 };
 
-// TODO: handle placement of data in database
-// must be in schema format, convo input is an object
-const getEvent = (convo, callback) => {
-  //front end sends convo (convo is data of who both users are)
-  users.find((err, data) => {
-    if (err) {
-      console.log("could not save conversation data in DB")
-      callback(err, null)
-    } else {
-      callback(null, data)
-    }
-  })
-};
-
-const updateMessages = (convoId, messageData, callback) => {
-  // expecting conversation id, and updated messages.
-  // may need to set on interval to send messages to database
-  console.log(convoId, messageData);
-  messages.findOneAndUpdate({"_id": `ObjectId(${convoId})`}, messageData, {useFindAndModify: false}, (err, data) => {
-    if (err) {
-      console.log("could not update messages in database")
-      callback(err, null)
-    } else {
-      callback(null, data)
-    }
-  })
-};
-
 module.exports ={
   createEvent,
-  getEvent,
   createUser,
   findUser,
+<<<<<<< HEAD
   updateUser,
   updateMessages,
+=======
+>>>>>>> 892f200f6f10a86ec26dc7e06b60289bd945b1ee
   findUserByLang
 }

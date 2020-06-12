@@ -13,7 +13,7 @@ import axios from 'axios'
 import LangSelect from './LangSelect';
 import EditProfile from './EditProfile';
 
-
+// TODO make child component out of the map of users, modulariz the future modal 
 class PenPals extends React.Component {
   constructor(props) {
     super(props); 
