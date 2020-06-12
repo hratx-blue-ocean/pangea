@@ -8,9 +8,10 @@ import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Axios from 'axios'
+import axios from 'axios'
 
 import LangSelect from './LangSelect';
+import EditProfile from './EditProfile';
 
 
 class PenPals extends React.Component {
@@ -31,7 +32,7 @@ class PenPals extends React.Component {
     }
     this.state = {
       langs: ['English', 'Spanish', 'Mandarin', 'Hindi', 'German', 'French'],
-      langInterested: '',
+      langInterested: [],
         currentUser,
         show: false
     }
@@ -44,20 +45,32 @@ class PenPals extends React.Component {
   handleShow() {
     this.setState({show: true})
   }
-s
+
   handleClose() {
     this.setState({show: false})
   }
 
   handleSubmit() {
+    const user = this.props.location.state.userData
     console.log("this is in handleSubmit")
-    console.log(this.state.langInterested)
-    axios.post(`/api/updateUser`)
-    .then(data) => {  
+    axios.post(`/api/updateUser`, {
+      username: user.username,
+      langFluent: user.langFluent,
+      langInterested: this.state.langInterested,
+      profile: user.profile,
+      events: user.events,
+      onlineStatus: user.onlineStatus,
+      password: user.password,
+      convoIds: user.convoIds,
+      imageLink: user.imageLink,
+    })
+    .then(function (response) {  
+      console.log(response);
     })
     .catch(err => {
       console.log(err.response.status, 'Error updating userlang');
     })
+    this.setState({show: false})
   }
 
   selectLanguage(reason, lang) {
@@ -123,7 +136,7 @@ s
             <Col>
                   <Form.Group>
                     <Form.Label>Language I'm interested in learning</Form.Label>
-                    <Form.Control required as='select' defaultValue={langUserWantsToLearn[0]} onChange={e => this.setState({langInterested: e.target.value})}>
+                    <Form.Control required as='select' defaultValue={langUserWantsToLearn[0]} onChange={e => this.setState({langInterested: [e.target.value]})}>
                       {this.state.langs.map((lang, i) => <option key={i}>{lang}</option>)}
                     </Form.Control>
                   </Form.Group>

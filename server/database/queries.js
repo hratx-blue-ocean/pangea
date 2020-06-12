@@ -42,29 +42,14 @@ const createUser = (user, callback) => {
   })
 };
 
-// saves user's intereste in language object in database: see schema.js for format
-const updateUser = (user, callback) => {
-  console.log("Queries here",user);
-  let doc = new users(user);
-
-  doc.save((err, data) => {
-    if (err) {
-      console.log("Could not create new user")
-      callback(err, null)
-    } else {
-      console.log(data._id)
-      callback(null, data)
-    }
-  })
-};
-
 //updates the user object conversation ID that the user is a part of
 // can just be ID number
-const updateUserConvos = (username, convoId, callback) => {
-  console.log(username, convoID);
-  users.findOneAndUpdate({username: username}, { $push: {"convoId": convoId} }, {useFindAndModify: false}, (err, data) => {
+const updateUser = (username, userObj, callback) => {
+  console.log("update User querey");
+  
+  users.findOneAndUpdate({username: username}, userObj, {useFindAndModify: false}, (err, data) => {
     if (err) {
-      console.log("Could not update user convoId in DB")
+      console.log("Could not update user in DB")
       callback(err, null)
     } else {
       callback(null, data)
@@ -74,7 +59,7 @@ const updateUserConvos = (username, convoId, callback) => {
 
 // create event for user
 const createEvent = (userId, callback) => {
-  //console.log(userId.event);
+  //Make sure that obj matches schema
   users.findOneAndUpdate({ "_id": userId.userId }, {$push:{events: userId.event}}, {useFindAndModify: false})
     .lean()
     .exec((err, data) => {
@@ -120,6 +105,7 @@ module.exports ={
   getEvent,
   createUser,
   findUser,
+  updateUser,
   updateMessages,
   findUserByLang
 }

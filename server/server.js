@@ -113,21 +113,15 @@ app.post('/api/signup', (req, res) => {
     })
   });
 
-  app.post('/api/updateUser', function(req, res) {
-    const doc = {
-      author: req.body.author,
-      quote: req.body.quote,
-      source: req.body.source,
-      rating: req.body.rating,
-      updatedAt: Date.now(),
-    });
-    queries.update
-    Word.update({_id: req.params.id}, doc, function(err, raw) {
-      if (err) {
-        res.send(err);
+  app.post('/api/updateUser', function (req, res) {
+    console.log(req.body, 'is req.body working?')
+    queries.updateUser(req.body.username, req.body, (err,data) => {
+     if (!err) {
+      res.send("user updated!");
+     } else {
+      res.status(500).send("error updating user in server")
       }
-      res.send(raw);
-    });
+    })
   });
   // ***** MESSAGE API's IF NEEDED *****
 
