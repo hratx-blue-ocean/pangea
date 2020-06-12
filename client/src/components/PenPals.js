@@ -3,7 +3,7 @@ import Talk from 'talkjs';
 import './PenPals.css';
 import axios from 'axios';
 
-
+// TODO make child component out of the map of users, modulariz the future modal 
 class PenPals extends React.Component {
   constructor(props) {
     super(props);

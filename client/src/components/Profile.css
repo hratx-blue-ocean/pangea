@@ -35,6 +35,7 @@ li {
   width: 40%;
   margin: 0 auto;
   text-align: center;
+  
 }
 
 .login-form {
@@ -68,7 +69,6 @@ li {
 
 
 .users {
-  display: flex;
   width: 55%;
   margin: 0 auto;
   justify-content: space-around;
@@ -79,7 +79,6 @@ li {
   padding: 20px 0;
 }
 .user {
-  display: flex;
   margin-bottom: 20px;
   position: relative;
   border-bottom: 1px solid #e6e9ec;
@@ -109,7 +108,7 @@ li {
   justify-content: center;
 }
 .user-info-container {
-  display: flex;
+
   width: 100%;
 }
 
@@ -167,9 +166,14 @@ li {
 }
 
 .chatbox-container {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 0px;
   height: 400px;
-  right: 5%;
+  right: 2%;
   width: 300px;
+}
+
+#calendar {
+  margin: 20px auto 0px;
+  width: 60%;
 }

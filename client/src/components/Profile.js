@@ -25,7 +25,6 @@ const Profile = props => {
             </li>
           </ul>
         </nav>
-        {/* <Route path="/" exact component={Login}/>  */}
         <Route path="/penpals" component={PenPals}/>
         <Route path="/chat" component={Chat}/>
       </Router>
