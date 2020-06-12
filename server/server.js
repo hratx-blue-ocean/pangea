@@ -5,7 +5,6 @@ const path = require('path');
 const queries = require('./database/queries');
 const bodyParser = require('body-parser');
 
-
 // open up CORS
 app.use((_, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -17,7 +16,6 @@ app.use(express.static(path.join(__dirname, "../client/public/")))
 app.use(bodyParser.json())
 
 // ***** USER API'S *****
-// finds user *WORKS* did work ,but deleted for the authentication and login route.. 
 
 //signup route
 app.post('/api/signup', (req, res) => {
@@ -35,7 +33,7 @@ app.post('/api/signup', (req, res) => {
         }
       })
     } else {
-      //if user does exist send 401.
+      //if user does exists
       res.status(401).send('Email already in use');
     }
   })
@@ -57,24 +55,6 @@ app.post('/api/signup', (req, res) => {
       })
     });
 
-  //front end decide way to pass data req? *WORKS*
-  app.post('/api/createUser', (req, res) => {
-    console.log(req.body)
-    if (req.body !== undefined) {
-      queries.createUser(req.body, (err,data) => {
-        if (data.length === 0 || err) {
-          console.log("error creating user in route:", err)
-          res.status(500).send("error getting all users data in server")
-        } else {
-          console.log("user created!");
-          res.send(data);
-        }
-      })
-    } else {
-      res.status(500).send("invalid format")
-    }
-  });
-
   // Finds all users by fluent language *WORKS*
   app.get('/api/findUserByLang', (req, res) => {
     queries.findUserByLang(req.body.lang, (err, data) => {
@@ -87,84 +67,15 @@ app.post('/api/signup', (req, res) => {
   });
 
   app.post('/api/createEvent', function (req, res) {
-    // console.log(req.body, 'made you look')
     queries.createEvent(req.body, (err,data) => {
       if (err) {
         console.log("error creating event in server:", err)
         res.status(500).send("error creating event in server")
       } else {
-        console.log("event created!");
         res.send(data);
       }
     })
   });
-
-  // Finds all events for a user
-  app.get('/api/getEvents', function (req, res) {
-    console.log(req.body, 'made you look')
-    queries.getEvent(req.body, (err,data) => {
-      if (data.length === 0 || err) {
-        console.log("error creating event in server:", err)
-        res.status(500).send("error creating event in server")
-      } else {
-        console.log("event created!");
-        res.send(data);
-      }
-    })
-  });
-
-  // ***** MESSAGE API's IF NEEDED *****
-
-  // app.put('/api/updateUserConvos', function (req, res) {
-  //   queries.updateUserConvos(req.body.id, (err,data) => {
-  //     if (data.length === 0 || err) {
-  //       console.log("error updating user convos in server:", err)
-  //       res.status(500).send("error updating user convos in server")
-  //     } else {
-  //       console.log("user convo updated!");
-  //       res.send(data);
-  //     }
-  //   })
-  // });
-
-  // app.get('/api/getConvo', function (req, res) {
-  //   queries.getConvo(req.body.convoId, (err,data) => {
-  //     if (data.length === 0 || err) {
-  //       console.log("error getting convo in server:", err)
-  //       res.status(500).send("error getting convo in server")
-  //     } else {
-  //       console.log("convo gotten!");
-  //       res.send(data);
-  //     }
-  //   })
-  // });
-
-  // pass to body *WORKS*
-  // app.post('/api/createConvo', function (req, res) {
-
-  //   queries.createConvo(req.body, (err,data) => {
-  //     if (data.length === 0 || err) {
-  //       console.log("error creating convo in server:", err)
-  //       res.status(500).send("error creating convo in server")
-  //     } else {
-  //       console.log("convo created!");
-  //       res.send(data);
-  //     }
-  //   })
-  // });
-
-// app.put('/api/updateMessages', function (req, res) {
-//   queries.updateMessages(req.body.id, (err, data) => {
-//       if (data.length === 0 || err) {
-//           console.log("error updating messeges in server:", err);
-//           res.status(500).send("error updating messages in server");
-//       } else {
-//         console.log("messages updated!");
-//         res.send(data);
-//       }
-//   });
-// });
-
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

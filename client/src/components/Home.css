@@ -14,11 +14,8 @@
 #landing h1, h6 {
   margin-bottom: 20px;
 }
-/* https://media.giphy.com/media/4QFo06HInf6afSss8A/giphy.gif */
-/* https://media.giphy.com/media/xkSzarUPEt326y6klD/giphy.gif */
-/* https://media.giphy.com/media/1Ygkk70ho1h6YrK6oC/giphy.gif */
+
 #landing h1 {
-  
   background: url(https://media.giphy.com/media/1Ygkk70ho1h6YrK6oC/giphy.gif);
   background-size: cover;
   background-position-y: -150px;
