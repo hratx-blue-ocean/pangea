@@ -15,7 +15,9 @@ const findUser = (username, callback) => {
 // returns all users that are fluent in specified language
 // object format: {"lang": "German"}
 const findUserByLang = (lang, callback) => {
-  users.find({langFluent: { $all: [lang]}}).lean().exec((err, data) => {
+  users.find({ langFluent: { $in: [lang] } })
+    .lean()
+    .exec((err, data) => {
     if (err) {
       console.log('Could not find user with language in DB', err)
       callback(err, null)

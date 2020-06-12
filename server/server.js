@@ -56,8 +56,8 @@ app.post('/api/signup', (req, res) => {
     });
 
   // Finds all users by fluent language *WORKS*
-  app.get('/api/findUserByLang', (req, res) => {
-    queries.findUserByLang(req.body.lang, (err, data) => {
+app.get('/api/findUserByLang/:lang', (req, res) => {
+    queries.findUserByLang(req.params.lang, (err, data) => {
       if (data.length === 0 || err) {
         res.status(500).send("Error finding users in DB")
       } else {
