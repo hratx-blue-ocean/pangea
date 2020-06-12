@@ -5,6 +5,10 @@ import './PenPals.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Axios from 'axios'
 
 import LangSelect from './LangSelect';
 
@@ -26,6 +30,8 @@ class PenPals extends React.Component {
         currentUser = currentTalkjsUser
     }
     this.state = {
+      langs: ['English', 'Spanish', 'Mandarin', 'Hindi', 'German', 'French'],
+      langInterested: '',
         currentUser,
         show: false
     }
@@ -38,20 +44,20 @@ class PenPals extends React.Component {
   handleShow() {
     this.setState({show: true})
   }
-
+s
   handleClose() {
     this.setState({show: false})
   }
 
   handleSubmit() {
-    if (!validator.validate(this.state.email)) {
-      this.setState({validEmail: false})
-    } else {
-      this.setState({
-        validEmail: true
-      });
-      this.signup();
-    }
+    console.log("this is in handleSubmit")
+    console.log(this.state.langInterested)
+    axios.post(`/api/updateUser`)
+    .then(data) => {  
+    })
+    .catch(err => {
+      console.log(err.response.status, 'Error updating userlang');
+    })
   }
 
   selectLanguage(reason, lang) {
@@ -97,6 +103,9 @@ class PenPals extends React.Component {
 
   render() {
     console.log(this.props.location.state)
+    console.log(this.props.location.state)
+    console.log("this is in PenPals", this.props.location.state.userData.langInterested[0])
+    const langUserWantsToLearn = this.props.location.state.userData.langInterested;
     const { currentUser } = this.state;
      // can you see this?
     return (
@@ -106,30 +115,28 @@ class PenPals extends React.Component {
         
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Signup</Modal.Title>
-          </Modal.Header>
+            <Modal.Title>Edit Profile</Modal.Title>
+           </Modal.Header>
 
           <Modal.Body>
-            <form onSubmit={this.handleSubmit}>
-              <Col>
-              <Form.Group>
-                <Form.Label>Learning Language</Form.Label>
-                    <Form.Control required as='select' defaultValue={userData.langInterested} onChange={e => this.setState({langInterested: e.target.value})}>
+            <Form onSubmit={this.handleSubmit}>
+            <Col>
+                  <Form.Group>
+                    <Form.Label>Language I'm interested in learning</Form.Label>
+                    <Form.Control required as='select' defaultValue={langUserWantsToLearn[0]} onChange={e => this.setState({langInterested: e.target.value})}>
                       {this.state.langs.map((lang, i) => <option key={i}>{lang}</option>)}
                     </Form.Control>
                   </Form.Group>
-              </Col>
-            </form>
+                </Col>
+            </Form>
           </Modal.Body>
 
           <Modal.Footer>
             <Button variant='secondary' onClick={this.handleClose}>Cancel</Button>
-            <Button variant='primary' onClick={this.handleSubmit}>Signup</Button>
-          </Modal.Footer>
-          
+            <Button variant='primary' onClick={this.handleSubmit}>Save</Button>
+          </Modal.Footer>          
         </Modal>
       </>
-
       
       <div className="users">
           <div className="current-user-container">

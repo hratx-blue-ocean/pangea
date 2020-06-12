@@ -113,6 +113,22 @@ app.post('/api/signup', (req, res) => {
     })
   });
 
+  app.post('/api/updateUser', function(req, res) {
+    const doc = {
+      author: req.body.author,
+      quote: req.body.quote,
+      source: req.body.source,
+      rating: req.body.rating,
+      updatedAt: Date.now(),
+    });
+    queries.update
+    Word.update({_id: req.params.id}, doc, function(err, raw) {
+      if (err) {
+        res.send(err);
+      }
+      res.send(raw);
+    });
+  });
   // ***** MESSAGE API's IF NEEDED *****
 
   // app.put('/api/updateUserConvos', function (req, res) {

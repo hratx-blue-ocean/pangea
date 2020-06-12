@@ -42,6 +42,22 @@ const createUser = (user, callback) => {
   })
 };
 
+// saves user's intereste in language object in database: see schema.js for format
+const updateUser = (user, callback) => {
+  console.log("Queries here",user);
+  let doc = new users(user);
+
+  doc.save((err, data) => {
+    if (err) {
+      console.log("Could not create new user")
+      callback(err, null)
+    } else {
+      console.log(data._id)
+      callback(null, data)
+    }
+  })
+};
+
 //updates the user object conversation ID that the user is a part of
 // can just be ID number
 const updateUserConvos = (username, convoId, callback) => {

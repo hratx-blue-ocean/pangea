@@ -6,7 +6,9 @@ const LangSelect = props => {
   const [selected, setSelected] = useState('Select Language');
 
   return (
-    {langs.map(lang => return )}
+    <div>
+    </div>
+    // {langs.map(lang => {return lang})}
   )
 }
 
