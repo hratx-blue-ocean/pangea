@@ -18,10 +18,10 @@ const Profile = props => {
         <nav className="navbar">
           <ul className="navbar-list">
             <li className="navbar-item">
-              <Link to="/penpals" className="navbar-link">My Pen Pals</Link>
+              <Link to={{ pathname: "/penpals", state: {userData} }} className="navbar-link" >My Pen Pals</Link>
             </li>
             <li className="navbar-item">
-              <Link to="/chat" className="navbar-link">Chat</Link>
+                <Link to={{ pathname: "/chat", state: {userData} }} className="navbar-link">Chat</Link>
             </li>
           </ul>
         </nav>

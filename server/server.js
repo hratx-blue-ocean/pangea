@@ -77,6 +77,7 @@ app.get('/api/login/:username/:password', (req, res) => {
   })
 });
 
+<<<<<<< HEAD
 // Finds all users by fluent language *WORKS*
 app.get('/api/findUserByLang', (req, res) => {
   queries.findUserByLang(req.body.lang, (err, data) => {
@@ -87,6 +88,18 @@ app.get('/api/findUserByLang', (req, res) => {
     }
   })
 });
+=======
+  // Finds all users by fluent language *WORKS*
+app.get('/api/findUserByLang/:lang', (req, res) => {
+    queries.findUserByLang(req.params.lang, (err, data) => {
+      if (data.length === 0 || err) {
+        res.status(500).send("Error finding users in DB")
+      } else {
+        res.send(data);
+      }
+    })
+  });
+>>>>>>> 88e6e25460b03fbeeec1f9f1f7f0cc6d3640e9d0
 
 app.post('/api/createEvent', function (req, res) {
   queries.createEvent(req.body, (err,data) => {

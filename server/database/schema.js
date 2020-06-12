@@ -22,6 +22,8 @@ var userSchema = new mongoose.Schema({
   password: String,
   convoIds: Array,
   imageLink: String,
+  firstName: String,
+  lastName: String,
 }, {collection: 'users'})
 
 var messageSchema = new mongoose.Schema({

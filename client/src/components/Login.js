@@ -42,7 +42,6 @@ const Login = props => {
     
     axios.get(`http://localhost:9000/api/login/${email}/${password}`)
       .then(( {data} ) => {
-        console.log(data)
         props.login(data[0])
       })
       .catch(err => {
