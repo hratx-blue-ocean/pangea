@@ -23,6 +23,8 @@
     "cors": "^2.8.5",
     "email-validator": "^2.0.4",
     "express": "^4.16.4",
+    "file-system": "^2.2.2",
+    "fs": "0.0.1-security",
     "moment": "^2.26.0",
     "node-fetch": "^2.5.0",
     "path": "^0.12.7",
