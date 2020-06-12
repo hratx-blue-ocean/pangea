@@ -81,7 +81,7 @@ class Signup extends Component {
       langInterested: this.state.langInterested,
       password: this.state.password,
       onlineStatus: true,
-      imageLink: this.state.imageLink
+      imageLink: "https://picsum.photos/seed/picsum/200/300"
     }
     
     axios.post('/api/signup', body)
