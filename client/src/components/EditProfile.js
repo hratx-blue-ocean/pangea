@@ -42,7 +42,7 @@ class EditProfile extends React.Component {
       }
     
       handleSubmit() {
-        const user = this.props.location.state.userData
+        const user = userInfo
         console.log("this is in handleSubmit")
         axios.post(`/api/updateUser`, {
           username: user.username,
@@ -67,8 +67,9 @@ class EditProfile extends React.Component {
         this.setState({[reason]: lang})
       }
 
-      
+
     render() {
+        console.log(this.props.userInfo);
         <>
         
         
@@ -82,7 +83,7 @@ class EditProfile extends React.Component {
             <Col>
                   <Form.Group>
                     <Form.Label>Language I'm interested in learning</Form.Label>
-                    <Form.Control required as='select' defaultValue={langUserWantsToLearn[0]} onChange={e => this.setState({langInterested: [e.target.value]})}>
+                    <Form.Control required as='select' defaultValue={userInfo.languageInterested[0]} onChange={e => this.setState({langInterested: [e.target.value]})}>
                       {this.state.langs.map((lang, i) => <option key={i}>{lang}</option>)}
                     </Form.Control>
                   </Form.Group>
