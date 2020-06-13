@@ -1,6 +1,6 @@
 #landing {
   background-image: url("https://i.ibb.co/3MXRgxn/pangaea-2.png");
-  background-color: #e3e0cc; 
+  background-color: #214365; 
 
   height: 100vh;
   background-position: center;
@@ -16,9 +16,9 @@
 }
 
 #landing h1 {
-  background: url(https://media.giphy.com/media/1Ygkk70ho1h6YrK6oC/giphy.gif);
+  background: url(https://media.giphy.com/media/ZcQnkuO90fR0rMK4Jn/giphy.gif);
   background-size: cover;
-  background-position-y: -150px;
+  background-position-y: -200px;
   
   -webkit-background-clip: text;
   color: transparent; 
