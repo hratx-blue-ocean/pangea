@@ -11,7 +11,8 @@ class Signup extends Component {
     super(props);
     this.state = {
       show: false,
-      failedSignup: false,
+      invalidPassword: false,
+      emailUsed: false
     }
 
     this.handleShow = this.handleShow.bind(this);
@@ -36,8 +37,14 @@ class Signup extends Component {
         this.props.login(data)
       })
       .catch(err => {
-        console.error(err, 'Error creating user');
-        this.setState({failedSignup: true})
+        if (err.response.status === 422) {
+          this.setState({invalidPassword: true})
+        } else {
+          this.setState({
+            invalidPassword: false,
+            emailUsed: true
+          })
+        }
       })
   }
 
@@ -52,8 +59,8 @@ class Signup extends Component {
           </Modal.Header>
 
           <Modal.Body>
-            {this.state.failedSignup ? <Alert variant={'danger'}>Email is already in use</Alert> : null}
-
+            {this.state.emailUsed ? <Alert variant={'danger'}>Email is already in use</Alert> : null}
+            {this.state.invalidPassword ? <Alert variant={'danger'}>Invalid password</Alert> : null}
             <SignupForm close={this.handleClose} signup={this.signup}/>
 
           </Modal.Body>
