@@ -44,7 +44,7 @@ const SignupForm = props => {
         if (!values.password) {
           errors.password = 'Password Required';
         } else if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/.test(values.password)){
-          errors.password = 'Your password must be 8-20 characters long, contain at least one capital and one lowercase letter, a number, and one special character.'
+          errors.password = 'Your password must be 8-20 characters long, contain at least one capital and one lowercase letter, a number, and one special character (!@#$%^&*).'
         }
 
         return errors;

@@ -1,9 +1,13 @@
+//TODO: refactor to express router file structure
 const express = require('express');
 const app = express();
 const port = 9000;
 const path = require('path');
 const queries = require('./database/queries');
 const bodyParser = require('body-parser');
+
+//authentication middleware
+const { check, validationResult } = require('express-validator'); 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -20,41 +24,52 @@ app.use(bodyParser.json())
 // ***** USER API'S *****
 
 //signup route
-app.post('/api/signup', (req, res) => {
-  // check if the user exists
-  queries.findUser(req.body.username, (err,data) => {
-    if (err) {
-      res.status(500).send('Error finding user')
-    } else if (data.length === 0) {
-      // if email doesn't exist
-      // generate salt
-      bcrypt.genSalt(saltRounds)
-        // hash password
-        .then(salt => {
-          return bcrypt.hash(req.body.password, salt);
-        })
-        // create user with hashed password to db
-        .then(hash => {
-          const userData = req.body;
-          userData.password = hash;
-          queries.createUser(userData, (error, results) => {
-            if (error) {
-              res.status(500).send('Error creating account');
-            } else {
-              //deletes password before sending response to client.
-              delete results['_doc']['password'];
-              res.send(results);
-            }
+app.post('/api/signup', [
+  check('firstName').not().isEmpty().trim().escape(),
+  check('lastName').not().isEmpty().trim().escape(),
+  check('username').not().isEmpty().isEmail().normalizeEmail(),
+  check('password').not().isEmpty().custom(value => /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/.test(value)).trim().escape()
+], (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    res.status(422).jsonp(errors.array());
+  } else {
+    // check if the user exists
+    queries.findUser(req.body.username, (err,data) => {
+      if (err) {
+        res.status(500).send('Error finding user')
+      } else if (data.length === 0) {
+        // if email doesn't exist
+        // generate salt
+        bcrypt.genSalt(saltRounds)
+          // hash password
+          .then(salt => {
+            return bcrypt.hash(req.body.password, salt);
           })
-        })
-        .catch(err => {
-          res.status(401).send('Error with bcrypt');
-        })
-    } else {
-      //if user does exists
-      res.status(401).send('Email already in use');
-    }
-  })
+          // create user with hashed password to db
+          .then(hash => {
+            const userData = req.body;
+            userData.password = hash;
+            queries.createUser(userData, (error, results) => {
+              if (error) {
+                res.status(500).send('Error creating account');
+              } else {
+                //deletes password before sending response to client.
+                delete results['_doc']['password'];
+                res.send(results);
+              }
+            })
+          })
+          .catch(err => {
+            res.status(401).send('Error with bcrypt');
+          })
+      } else {
+        //if user does exists
+        res.status(401).send('Email already in use');
+      }
+    })
+  }
 });
 
 // login route
