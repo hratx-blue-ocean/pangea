@@ -1,57 +1,36 @@
 import React from 'react';
 import Talk from 'talkjs';
+import { sampleUsers } from './sampleUsers';
 import './PenPals.css';
-import axios from 'axios';
 
-// TODO make child component out of the map of users, modulariz the future modal 
+
 class PenPals extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); 
+    let currentUser;
+    const currentTalkjsUser = {
+      id: "4",
+      name: "Grace Loveday",
+      email: "grace@sample.com",
+      photoUrl: "https://randomuser.me/api/portraits/women/44.jpg",
+      role: "Member",
+      info: "Product Designer at Google",
+      welcomeMessage: "Hey there! Love to chat :-)"
+  };
+    if (currentTalkjsUser) {
+        currentUser = currentTalkjsUser
+    }
     this.state = {
-        currentUser: null
+        currentUser
     }
-  }
-  componentDidMount() {
-    this.updateUser()
-    this.grabPenPals()
-  }
-
-  updateUser() {
-    this.setState({currentUser: this.props.location.state })
-  }
-
-  grabPenPals() {
-    let langSearch = {
-        lang: this.props.location.state.userData.langInterested
-    }
-    axios.get(`/api/findUserByLang/${langSearch.lang[0]}`)
-      .then((data) => {
-        this.setState({
-        relatedUser : data.data
-      })
-      })
-      .catch((error) => {
-        console.log('error grabbing related users', error)
-    })
   }
 
   handleClick(userId) {
+ 
     /* Retrieve the two users that will participate in the conversation */
-    const currentUser = {
-      id: this.state.currentUser.userData._id,
-      name: this.state.currentUser.userData.firstName,
-      email: this.state.currentUser.userData.username,
-      photoUrl: this.state.currentUser.userData.imageLink,
-      welcomeMessage: this.state.currentUser.userData.langFluent[0]
-    };
+    const { currentUser } = this.state;
+    const user = sampleUsers.find(user => user.id === userId)
 
-    const user = this.state.relatedUser.find(user => user._id === userId)
-    user.id = user._id;
-    user.name = user.firstName;
-    user.email = user.username;
-    user.photoUrl = user.imageLink;
-    user.info = user.langInterested;
-    user.welcomeMessage = user.langFluent[0];
     /* Session initialization code */
     Talk.ready
     .then(() => {
@@ -84,49 +63,46 @@ class PenPals extends React.Component {
 
 
   render() {
-    // const { currentUser } = this.state;
+    const { currentUser } = this.state;
 
     return (
       <div className="users">
           <div className="current-user-container">
-            {this.state.currentUser &&
+            {currentUser &&
               <div>
                 <picture className="current-user-picture">
-              <img alt={this.state.currentUser.userData.username} src={this.state.currentUser.userData.imageLink} />
+              <img alt={currentUser.name} src={currentUser.photoUrl} />
             </picture>
+            {currentUser.info}
                 <div className="current-user-info">
-                    <h3>{this.state.currentUser.userData.firstName}</h3>
-                    <p>Teaching:{this.state.currentUser.userData.langFluent}</p>
-                    <p>Interested in learning:{this.state.currentUser.userData.langInterested}</p>
+                    <h3>{currentUser.name}</h3>
+                    <p>{currentUser.description}</p>
                 </div>
               </div>
             }
           </div>
 
           <div className="users-container"> 
-          <ul>
-            {this.state.relatedUser &&
-              <div>
-                {this.state.relatedUser.map(user => 
-                  <li key={user._id} className="user">
-                      <picture className="user-picture">
-                          <img src={user.imageLink} alt={`${user.firstName}`} />
-                      </picture>
-                      <div className="user-info-container">
-                          <div className="user-info">
-                              <h4>{user.firstName}</h4>
-                              <p>{user.lastName}</p>
-                          </div>
-                          <div className="user-action">
+              <ul>
+                  {sampleUsers.map(user => 
+                    <li key={user.id} className="user">
+                        <picture className="user-picture">
+                            <img src={user.photoUrl} alt={`${user.name}`} />
+                        </picture>
+                        <div className="user-info-container">
+                            <div className="user-info">
+                                <h4>{user.name}</h4>
+                                <p>{user.info}</p>
+                            </div>
+                            <div className="user-action">
 
-                              <button onClick={(userId) => this.handleClick(user._id)}>Message</button>
-                          </div>
-                      </div>
-                  </li>
-                )}
-            </div>
-            }
+                                <button onClick={(userId) => this.handleClick(user.id)}>Message</button>
+                            </div>
+                        </div>
+                    </li>
+                  )}
               </ul>
+
               <div className="chatbox-container" ref={c => this.container = c}>
                   <div id="talkjs-container" style={{height: "300px"}}><i></i></div>
               </div>
