@@ -9,23 +9,24 @@ RUN apk add --update nodejs nodejs-npm
 WORKDIR /pangea
 
 COPY /package.json ./
-# COPY /package-lock.json ./
+COPY /package-lock.json ./
 
 COPY /client/package.json ./client
-# COPY /client/package-lock.json ./client
+COPY /client/package-lock.json ./client
 
 COPY /server/package.json ./server
-# COPY /server/package-lock.json ./server
-
-
-#copy source code into container
-COPY . /pangea
+COPY /server/package-lock.json ./server
 
 #  install dependancies
-RUN npm run setup;
+RUN cd .. npm run setup;
+
+#copy source code into container
+COPY . ./
+
+
+
 # select port
 EXPOSE 9000
 
-RUN npm rebuild node-sass@4.12.0
 # run commands to start app
-CMD ["npm", "run", "start:docker"]
+CMD ["npm", "run", "start:devDocker"]

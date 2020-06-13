@@ -71,9 +71,6 @@ bundle.js
 config.js
 mongoConfig.js
 
-#image config
-client/src/config.js
-
 #terraform
 terraform.tfvars
 terraform.tfstate

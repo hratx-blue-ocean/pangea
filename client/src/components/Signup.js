@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -23,7 +22,6 @@ class Signup extends Component {
       langFluent: 'English',
       langInterested: 'Spanish',
       currentLocation: '',
-      imageLink: '',
 
       isLoading: true,
       token: '',
@@ -80,8 +78,7 @@ class Signup extends Component {
       langFluent: this.state.langFluent,
       langInterested: this.state.langInterested,
       password: this.state.password,
-      onlineStatus: true,
-      imageLink: "https://picsum.photos/seed/picsum/200/300"
+      onlineStatus: true
     }
     
     axios.post('/api/signup', body)
@@ -102,7 +99,7 @@ class Signup extends Component {
     return (
       <>
         <Button variant='outline-light' id='custombtn' onClick={e => this.handleShow(e)}>Signup</Button>
-
+        
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Signup</Modal.Title>
@@ -111,10 +108,6 @@ class Signup extends Component {
           <Modal.Body>
             {this.state.failedSignup ? <Alert variant={'danger'}>Email is already in use</Alert> : null}
             <Form noValidate validated={this.state.validated} onSubmit={this.handleSubmit}>
-              <Form.Group>
-                <Form.File required id='profilePic' label='Upload Profile Picture' onChange={e => console.log(e.currentTarget)} />
-              </Form.Group>
-
               <Row>
                 <Col>
                   <Form.Group>

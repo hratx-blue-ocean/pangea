@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { Component } from 'react';
 import '../main.scss';
 import FullCalendar from '@fullcalendar/react';
