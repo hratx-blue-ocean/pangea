@@ -1,0 +1,17 @@
+.fc-button-primary:disabled {
+  color: #fff;
+  background-color: #214365;
+  border-color: #214365;
+}
+
+.fc-button-primary {
+  color: #fff;
+  background-color: #214365!important;
+  border-color: #214365!important;
+}
+
+.fc-button-primary:hover {
+  color: #fff;
+  background-color: #2d8dec!important;
+  border-color: #2d8dec!important;
+}
