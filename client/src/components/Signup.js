@@ -31,7 +31,7 @@ class Signup extends Component {
       failedSignup: false,
       validated: false
     }
-    
+
     this.handleShow = this.handleShow.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -50,7 +50,7 @@ class Signup extends Component {
     if (
       this.state.firstName.length > 0 &&
       this.state.lastName.length > 0 &&
-      validator.validate(this.state.email) && 
+      validator.validate(this.state.email) &&
       this.state.password.length > 0
     ) {
       return true;
@@ -66,7 +66,7 @@ class Signup extends Component {
     }
 
     this.setState({validated: true});
-    
+
     if (this.validateForm()) {
       this.signup();
     }
@@ -83,8 +83,8 @@ class Signup extends Component {
       onlineStatus: true,
       imageLink: "https://picsum.photos/seed/picsum/200/300"
     }
-    
-    axios.post('/api/signup', body)
+
+    axios.post('http://pangea-env.eba-8xp63xtj.us-east-2.elasticbeanstalk.com/api/signup', body)
       .then(( {data} ) => {
         this.props.login(data)
       })
@@ -169,7 +169,7 @@ class Signup extends Component {
             <Button variant='light' id='custombtn' style={{color: 'black', marginRight: '5px'}} onClick={this.handleClose}>Cancel</Button>
             <Button variant='light' id='custombtn' style={{color: 'black'}} type='submit' onClick={e => this.handleSubmit(e)}>Signup</Button>
           </Modal.Footer>
-          
+
         </Modal>
       </>
     )

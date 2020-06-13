@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 
-// TODO make child component out of the map of users, modulariz the future modal 
+// TODO make child component out of the map of users, modulariz the future modal
 class PenPals extends React.Component {
   constructor(props) {
     super(props);
@@ -39,7 +39,7 @@ class PenPals extends React.Component {
 
   handleSubmit() {
     const user = this.props.location.state.userData;
-    axios.post(`/api/updateUser`, {
+    axios.post(`http://pangea-env.eba-8xp63xtj.us-east-2.elasticbeanstalk.com/api/updateUser`, {
       username: user.username,
       langFluent: user.langFluent,
       langInterested: this.state.langInterested,
@@ -50,7 +50,7 @@ class PenPals extends React.Component {
       convoIds: user.convoIds,
       imageLink: user.imageLink,
     })
-    .then(function (response) {  
+    .then(function (response) {
       console.log(response);
     })
     .catch(err => {
@@ -67,7 +67,7 @@ class PenPals extends React.Component {
     let langSearch = {
         lang: this.props.location.state.userData.langInterested
     }
-    axios.get(`/api/findUserByLang/${langSearch.lang[0]}`)
+    axios.get(`http://pangea-env.eba-8xp63xtj.us-east-2.elasticbeanstalk.com/api/findUserByLang/${langSearch.lang[0]}`)
       .then((data) => {
         this.setState({
         relatedUser : data.data
@@ -108,12 +108,12 @@ class PenPals extends React.Component {
                 appId:  'tVSZLKOS',
                 me: me
             });
-        } 
-        
+        }
+
         /* Get a conversation ID or create one */
         const conversationId = Talk.oneOnOneId(me, other);
         const conversation = window.talkSession.getOrCreateConversation(conversationId);
-        
+
         /* Set participants of the conversations */
         conversation.setParticipant(me);
         conversation.setParticipant(other);
@@ -121,7 +121,7 @@ class PenPals extends React.Component {
         /* Create and mount chatbox in container */
         this.chatbox = window.talkSession.createChatbox(conversation);
         this.chatbox.mount(this.container);
-    })            
+    })
     .catch(e => console.error(e));
   }
 
@@ -154,7 +154,7 @@ class PenPals extends React.Component {
           <Modal.Footer>
             <Button variant='secondary' onClick={this.handleClose}>Cancel</Button>
             <Button variant='primary' onClick={this.handleSubmit}>Save</Button>
-          </Modal.Footer>          
+          </Modal.Footer>
           </Modal>
           </>
           <div className="current-user-container">
@@ -173,11 +173,11 @@ class PenPals extends React.Component {
             }
           </div>
 
-          <div className="users-container"> 
+          <div className="users-container">
           <ul>
             {this.state.relatedUser &&
               <div>
-                {this.state.relatedUser.map(user => 
+                {this.state.relatedUser.map(user =>
                   <li key={user._id} className="user">
                       <picture className="user-picture">
                           <img src={user.imageLink} alt={`${user.firstName}`} />
