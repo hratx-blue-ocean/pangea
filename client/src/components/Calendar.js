@@ -40,7 +40,7 @@ class Calendar extends Component {
       event: event
     }
 
-    axios.post('/api/createEvent', newEvent)
+    axios.post('http://pangea-env.eba-8xp63xtj.us-east-2.elasticbeanstalk.com/api/createEvent', newEvent)
       .then(() => {
         this.setState(prevState => ({
           events: [...prevState.events, event],
@@ -55,18 +55,18 @@ class Calendar extends Component {
     return (
       <>
         <div id='calendar'>
-          <FullCalendar 
-            defaultView='dayGridMonth' 
-            plugins={[ dayGridPlugin, interactionPlugin]} 
+          <FullCalendar
+            defaultView='dayGridMonth'
+            plugins={[ dayGridPlugin, interactionPlugin]}
             selectable='true'
             dateClick={this.handleDateClick}
             events={this.state.events}
           />
         </div>
-        <CalEvent 
-          show={this.state.addEvent} 
-          close={this.closeEventModal} 
-          date={this.state.selectedDate} 
+        <CalEvent
+          show={this.state.addEvent}
+          close={this.closeEventModal}
+          date={this.state.selectedDate}
           addEvent={this.addEvent}
         />
       </>
