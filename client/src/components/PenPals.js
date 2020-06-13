@@ -57,7 +57,6 @@ class PenPals extends React.Component {
       console.log(err.response.status, 'Error updating userlang');
     })
     this.setState({ show: false });
-    
   }
 
   updateUser() {
