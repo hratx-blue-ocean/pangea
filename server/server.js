@@ -57,24 +57,6 @@ app.post('/api/signup', (req, res) => {
       })
     });
 
-  //front end decide way to pass data req? *WORKS*
-  app.post('/api/createUser', (req, res) => {
-    console.log(req.body)
-    if (req.body !== undefined) {
-      queries.createUser(req.body, (err,data) => {
-        if (data.length === 0 || err) {
-          console.log("error creating user in route:", err)
-          res.status(500).send("error getting all users data in server")
-        } else {
-          console.log("user created!");
-          res.send(data);
-        }
-      })
-    } else {
-      res.status(500).send("invalid format")
-    }
-  });
-
   // Finds all users by fluent language *WORKS*
   app.get('/api/findUserByLang', (req, res) => {
     queries.findUserByLang(req.body.lang, (err, data) => {
@@ -87,7 +69,6 @@ app.post('/api/signup', (req, res) => {
   });
 
   app.post('/api/createEvent', function (req, res) {
-    // console.log(req.body, 'made you look')
     queries.createEvent(req.body, (err,data) => {
       if (err) {
         console.log("error creating event in server:", err)
@@ -101,7 +82,6 @@ app.post('/api/signup', (req, res) => {
 
   // Finds all events for a user
   app.get('/api/getEvents', function (req, res) {
-    console.log(req.body, 'made you look')
     queries.getEvent(req.body, (err,data) => {
       if (data.length === 0 || err) {
         console.log("error creating event in server:", err)
@@ -113,58 +93,18 @@ app.post('/api/signup', (req, res) => {
     })
   });
 
-  // ***** MESSAGE API's IF NEEDED *****
 
-  // app.put('/api/updateUserConvos', function (req, res) {
-  //   queries.updateUserConvos(req.body.id, (err,data) => {
-  //     if (data.length === 0 || err) {
-  //       console.log("error updating user convos in server:", err)
-  //       res.status(500).send("error updating user convos in server")
-  //     } else {
-  //       console.log("user convo updated!");
-  //       res.send(data);
-  //     }
-  //   })
-  // });
 
-  // app.get('/api/getConvo', function (req, res) {
-  //   queries.getConvo(req.body.convoId, (err,data) => {
-  //     if (data.length === 0 || err) {
-  //       console.log("error getting convo in server:", err)
-  //       res.status(500).send("error getting convo in server")
-  //     } else {
-  //       console.log("convo gotten!");
-  //       res.send(data);
-  //     }
-  //   })
-  // });
-
-  // pass to body *WORKS*
-  // app.post('/api/createConvo', function (req, res) {
-
-  //   queries.createConvo(req.body, (err,data) => {
-  //     if (data.length === 0 || err) {
-  //       console.log("error creating convo in server:", err)
-  //       res.status(500).send("error creating convo in server")
-  //     } else {
-  //       console.log("convo created!");
-  //       res.send(data);
-  //     }
-  //   })
-  // });
-
-// app.put('/api/updateMessages', function (req, res) {
-//   queries.updateMessages(req.body.id, (err, data) => {
-//       if (data.length === 0 || err) {
-//           console.log("error updating messeges in server:", err);
-//           res.status(500).send("error updating messages in server");
-//       } else {
-//         console.log("messages updated!");
-//         res.send(data);
-//       }
-//   });
-// });
-
+app.post('/api/updateUser', function (req, res) {
+  console.log(req.body, 'is req.body working?')
+  queries.updateUser(req.body.username, req.body, (err, data) => {
+    if (err) {
+      res.status(500).send("error updating user in server")
+   } else {
+      res.send("user updated!");
+    }
+  })
+});
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

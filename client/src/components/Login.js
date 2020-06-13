@@ -52,7 +52,7 @@ const Login = props => {
 
   return (
     <>
-      <Button variant='outline-light' id='custombtn'  onClick={handleShow}>Login</Button>
+      <Button variant='outline-light' id='custombtn customwhite'  onClick={handleShow}>Login</Button>
 
       <Modal show={show} onHide={handleClose}> 
         <Modal.Header closeButton>

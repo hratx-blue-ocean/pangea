@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Image from 'react-bootstrap/Image';
 import './Home.css'
 
 import Login from './Login';
@@ -15,7 +14,6 @@ export default class Home extends Component {
       loggedIn: false,
       userData: {}
     };
-
     this.profile = this.profile.bind(this);
   }
 
@@ -40,21 +38,4 @@ export default class Home extends Component {
       </div>
     )
   }
-}
 
-/*
-import { useHistory } from "react-router-dom";
-
-function HomeButton() {
-  let history = useHistory();
-
-  function handleClick() {
-    history.push("/home");
-  }
-
-  return (
-    <button type="button" onClick={handleClick}>
-      Go home
-    </button>
-  );
-}*/
