@@ -1,0 +1,9 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "automaus/pangea"
+  },
+  "Ports": [
+    {"ContainerPort": "9000"}
+  ]
+}

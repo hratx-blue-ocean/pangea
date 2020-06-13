@@ -13,8 +13,6 @@ mongoose.connect(mongoConfig.mongoConf, {useNewUrlParser: true, useUnifiedTopolo
     //Collection = "messages" use messageSchema
 
 var userSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
   username: String,
   langFluent: Array,
   langInterested: Array,
@@ -24,6 +22,8 @@ var userSchema = new mongoose.Schema({
   password: String,
   convoIds: Array,
   imageLink: String,
+  firstName: String,
+  lastName: String,
 }, {collection: 'users'})
 
 var messageSchema = new mongoose.Schema({

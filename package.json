@@ -15,7 +15,8 @@
     "lint:server": "cd ./server && ../node_modules/.bin/eslint \"routes/**/*.js\" 2>/dev/null && echo 'Your code has passed the linting guidelines' || echo 'Please fix the errors listed above'",
     "start": "npm-run-all --parallel launch launch:client",
     "start:dev": "npm-run-all --parallel launch:dev launch:client",
-    "start:devDocker": "npm-run-all --parallel launch:dev launch:clientDocker"
+    "start:devDocker": "npm-run-all --parallel launch:dev launch:clientDocker",
+    "start:docker": "npm-run-all --parallel launch launch:clientDocker"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,10 @@
   "homepage": "https://https://github.com/hratx-blue-ocean/pangea#readme",
   "dependencies": {
     "dotenv": "^8.0.0",
+    "jquery": "^3.5.1",
     "mongoose": "^5.9.18",
+    "popper.js": "^1.16.1",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
