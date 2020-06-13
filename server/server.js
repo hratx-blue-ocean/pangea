@@ -77,18 +77,6 @@ app.get('/api/login/:username/:password', (req, res) => {
   })
 });
 
-<<<<<<< HEAD
-// Finds all users by fluent language *WORKS*
-app.get('/api/findUserByLang', (req, res) => {
-  queries.findUserByLang(req.body.lang, (err, data) => {
-    if (data.length === 0 || err) {
-      res.status(500).send("Error finding users in DB")
-    } else {
-      res.send(data);
-    }
-  })
-});
-=======
   // Finds all users by fluent language *WORKS*
 app.get('/api/findUserByLang/:lang', (req, res) => {
     queries.findUserByLang(req.params.lang, (err, data) => {
@@ -99,7 +87,6 @@ app.get('/api/findUserByLang/:lang', (req, res) => {
       }
     })
   });
->>>>>>> 88e6e25460b03fbeeec1f9f1f7f0cc6d3640e9d0
 
 app.post('/api/createEvent', function (req, res) {
   queries.createEvent(req.body, (err,data) => {
@@ -108,6 +95,17 @@ app.post('/api/createEvent', function (req, res) {
       res.status(500).send("error creating event in server")
     } else {
       res.send(data);
+    }
+  })
+});
+
+app.post('/api/updateUser', function (req, res) {
+  console.log(req.body, 'is req.body working?')
+  queries.updateUser(req.body.username, req.body, (err, data) => {
+    if (err) {
+      res.status(500).send("error updating user in server")
+   } else {
+      res.send("user updated!");
     }
   })
 });
