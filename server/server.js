@@ -73,23 +73,34 @@ app.post('/api/signup', [
 });
 
 // login route
-app.get('/api/login/:username/:password', (req, res) => {
-    
-  queries.findUser(req.params.username, (err, data) => {
-    if (data.length === 0 || err) {
-      res.status(500).send("error finding user in server")
-    } else {
-      bcrypt.compare(req.params.password, data[0].password)
-        .then(() => {
-          // delete password before sending to client
-          delete data[0]['password'];
-          res.send(data)
-        })
-        .catch(err => {
-          res.status(401).send('Unauthenticated');
-        })
-    }
-  })
+app.get('/api/login/:username/:password', [
+  check('username').not().isEmpty().isEmail().normalizeEmail(),
+  check('password').not().isEmpty().trim().escape()
+], (req, res) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    res.status(422).jsonp(errors.array());
+  } else {
+    queries.findUser(req.params.username, (err, data) => {
+      if (data.length === 0 || err) {
+        res.status(500).send("error finding user in server")
+      } else {
+        bcrypt.compare(req.params.password, data[0].password)
+          .then(result => {
+            if (result) {
+              // delete password before sending to client
+              delete data[0]['password'];
+              return res.send(data)
+            }
+            res.status(401).send('Unauthenticated');
+          })
+          .catch(err => {
+            res.status(401).send('Unauthenticated');
+          })
+      }
+    })
+  }
 });
 
   // Finds all users by fluent language *WORKS*

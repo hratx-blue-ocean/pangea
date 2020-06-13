@@ -10,7 +10,7 @@ const Login = props => {
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [validEmail, setValidEmail] = useState(true);
+  const [validEmail, setValidEmail] = useState(false);
   const [authError, setAuthError] = useState(false);
   const [validated, setValidated] = useState();
 
@@ -64,13 +64,25 @@ const Login = props => {
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group controlId='formEmail'>
               <Form.Label>Email Address</Form.Label>
-              <Form.Control required type='email' placeholder='Enter Email' onChange={e => setEmail(e.target.value)} />
+              <Form.Control 
+                required 
+                type='email' 
+                placeholder='Enter Email' 
+                onChange={e => setEmail(e.target.value)}
+                onBlur={() => setValidEmail(!validator.validate(email))}
+                isInvalid={validEmail}
+              />
               <Form.Control.Feedback type='invalid'>Please enter a valid email</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId='formPassword'>
               <Form.Label>Password</Form.Label>
-              <Form.Control required type='password' placeholder='Password' onChange={e => setPassword(e.target.value)} />
+              <Form.Control 
+                required 
+                type='password' 
+                placeholder='Password' 
+                onChange={e => setPassword(e.target.value)} 
+              />
               <Form.Control.Feedback type='invalid'>Password required</Form.Control.Feedback>
             </Form.Group>
 
