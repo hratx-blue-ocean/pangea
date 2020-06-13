@@ -69,3 +69,14 @@
   border-radius: 2px;
   cursor: pointer;
 }
+.profileBtn {
+  margin-top:10px;
+  color:#0073b1;
+  border-color: #0073b1;
+  border-radius: 2px;
+} 
+.profileBtn:hover {
+  color:lightgray;
+  background-color: #0073b1;
+  border-color: #0073b1;
+} 

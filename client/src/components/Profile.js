@@ -19,7 +19,7 @@ const Profile = props => {
         <a className="navbar-brand"><img src="pangaea-2.png" className="logo"></img></a>
           <ul className="navbar-list">
           <li className="navbar-item">
-                <Link to={{ pathname: "/"}} className="navbar-link">Home</Link>
+                <Link to={{ pathname: "/"}} className="navbar-link">Calendar</Link>
             </li>
             <li className="navbar-item">
               <Link to={{ pathname: "/penpals", state: {userData} }} className="navbar-link" >My Pen Pals</Link>
@@ -39,8 +39,3 @@ const Profile = props => {
 }
 
 export default Profile;
-
-/*
- /api/findUser queries by username
-/api/createUser recieves req.body
- */

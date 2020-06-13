@@ -167,7 +167,7 @@ class PenPals extends React.Component {
                     <h3>{this.state.currentUser.userData.firstName}</h3>
                     <p>Teaching: {this.state.currentUser.userData.langFluent}</p>
                     <p>Learning: {this.state.currentUser.userData.langInterested}</p>
-                    <Button variant="outline-light" id="custombtn" onClick={this.handleShow}>Edit Profile</Button>
+                    <Button variant="light" className="profileBtn" onClick={this.handleShow}>Edit</Button>
                 </div>
               </div>
             }
