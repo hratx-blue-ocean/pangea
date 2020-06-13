@@ -46,17 +46,17 @@
   justify-content:space-between;
 }
 
-#custombtn {
+.custombtn {
   border-color: #E3E0CC;
   color: #E3E0CC;
   font-weight: 650;
 }
 
-#custombtn:hover {
+.custombtn:hover {
   background-color: #E3E0CC;
   color: black;
 }
 
-#customwhite {
+.customwhite {
   color: #ffffff
 }
