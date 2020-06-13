@@ -1,6 +1,8 @@
 import React from 'react';
 import Talk from 'talkjs';
+import { sampleUsers } from './sampleUsers';
 import './PenPals.css';
+
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
@@ -9,7 +11,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 
-// TODO make child component out of the map of users, modulariz the future modal 
+
+
 class PenPals extends React.Component {
   constructor(props) {
     super(props);
@@ -66,35 +69,16 @@ class PenPals extends React.Component {
   grabPenPals() {
     let langSearch = {
         lang: this.props.location.state.userData.langInterested
+
     }
-    axios.get(`/api/findUserByLang/${langSearch.lang[0]}`)
-      .then((data) => {
-        this.setState({
-        relatedUser : data.data
-      })
-      })
-      .catch((error) => {
-        console.log('error grabbing related users', error)
-    })
   }
 
   handleClick(userId) {
+ 
     /* Retrieve the two users that will participate in the conversation */
-    const currentUser = {
-      id: this.state.currentUser.userData._id,
-      name: this.state.currentUser.userData.firstName,
-      email: this.state.currentUser.userData.username,
-      photoUrl: this.state.currentUser.userData.imageLink,
-      welcomeMessage: this.state.currentUser.userData.langFluent[0]
-    };
+    const { currentUser } = this.state;
+    const user = sampleUsers.find(user => user.id === userId)
 
-    const user = this.state.relatedUser.find(user => user._id === userId)
-    user.id = user._id;
-    user.name = user.firstName;
-    user.email = user.username;
-    user.photoUrl = user.imageLink;
-    user.info = user.langInterested;
-    user.welcomeMessage = user.langFluent[0];
     /* Session initialization code */
     Talk.ready
     .then(() => {
@@ -127,7 +111,7 @@ class PenPals extends React.Component {
 
 
   render() {
-    // const { currentUser } = this.state;
+    
     const langUserWantsToLearn = this.props.location.state.userData.langInterested[0]
 
     return (
@@ -158,16 +142,18 @@ class PenPals extends React.Component {
           </Modal>
           </>
           <div className="current-user-container">
-            {this.state.currentUser &&
+            {currentUser &&
               <div>
                 <picture className="current-user-picture">
-              <img alt={this.state.currentUser.userData.username} src={this.state.currentUser.userData.imageLink} />
+              <img alt={currentUser.name} src={currentUser.photoUrl} />
             </picture>
+            {currentUser.info}
                 <div className="current-user-info">
                     <h3>{this.state.currentUser.userData.firstName}</h3>
                     <p>Teaching: {this.state.currentUser.userData.langFluent}</p>
                     <p>Learning: {this.state.currentUser.userData.langInterested}</p>
                     <Button variant="outline-light" id="custombtn" onClick={this.handleShow}>Edit Profile</Button>
+
                 </div>
               </div>
             }

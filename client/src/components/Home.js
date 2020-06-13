@@ -4,7 +4,7 @@ import './Home.css'
 
 import Login from './Login';
 import Signup from './Signup';
-// possibly make the loggedin & login state more specific to its use
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -38,4 +38,4 @@ export default class Home extends Component {
       </div>
     )
   }
-}
+
