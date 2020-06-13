@@ -30,6 +30,16 @@ li {
   margin-right: 20px
 }
 
+.logo {
+  height: 41px;
+  position: absolute;
+  left: 20px;
+  top: 5px;
+}
+
+.logout {
+  color: #ffffff;
+}
 
 .login-container {
   width: 40%;
