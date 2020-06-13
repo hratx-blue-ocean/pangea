@@ -52,7 +52,7 @@ const Login = props => {
 
   return (
     <>
-      <Button variant='outline-light' id='custombtn customwhite'  onClick={handleShow}>Login</Button>
+      <Button variant='outline-light' className='custombtn customwhite'  onClick={handleShow}>Login</Button>
 
       <Modal show={show} onHide={handleClose}> 
         <Modal.Header closeButton>
@@ -74,8 +74,8 @@ const Login = props => {
               <Form.Control.Feedback type='invalid'>Password required</Form.Control.Feedback>
             </Form.Group>
 
-            <Button variant='light' id='custombtn' style={{color: 'black', marginRight: '5px'}} onClick={handleClose}>Cancel</Button>
-            <Button variant='light' id='custombtn' style={{color: 'black'}} type='submit' onClick={handleSubmit}>Login</Button>
+            <Button variant='light' className='custombtn' style={{color: 'black', marginRight: '5px'}} onClick={handleClose}>Cancel</Button>
+            <Button variant='light' className='custombtn' style={{color: 'black'}} type='submit' onClick={handleSubmit}>Login</Button>
           </Form>
         </Modal.Body>
       </Modal>
