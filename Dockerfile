@@ -8,6 +8,8 @@ RUN apk add --update nodejs nodejs-npm
 
 WORKDIR /pangea
 
+ENV PATH /node_modules/.bin:$PATH
+
 COPY /package.json ./
 COPY /package-lock.json ./
 
