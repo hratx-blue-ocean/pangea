@@ -17,27 +17,26 @@ class PenPals extends React.Component {
       langs: ['English', 'Spanish', 'Mandarin', 'Hindi', 'German', 'French'],
       langInterested: [],
       currentUser: null,
-      show: true
+      show: false
     }
     this.handleShow = this.handleShow.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
+
   componentDidMount() {
     this.updateUser();
     this.grabPenPals();
   }
-  // copy lines 47 thru 49 to Tim
+
   handleShow() {
     this.setState({ show: true });
   }
 
-  // copy lines 52 thru 54 to Tim
   handleClose() {
     this.setState({show: false});
   }
 
-  // copy lines 57 thru 78 to Tim
   handleSubmit() {
     const user = this.props.location.state.userData;
     axios.post(`/api/updateUser`, {
@@ -57,11 +56,11 @@ class PenPals extends React.Component {
     .catch(err => {
       console.log(err.response.status, 'Error updating userlang');
     })
-    this.setState({show: false})
+    this.setState({ show: false });
+    
   }
 
   updateUser() {
-    console.log('hi tim', this.props.location.state)
     this.setState({currentUser: this.props.location.state })
   }
 
@@ -134,7 +133,7 @@ class PenPals extends React.Component {
 
     return (
       <div className="users">
-        {/* <>
+        <>
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Edit Profile</Modal.Title>
@@ -158,7 +157,7 @@ class PenPals extends React.Component {
             <Button variant='primary' onClick={this.handleSubmit}>Save</Button>
           </Modal.Footer>          
           </Modal>
-          </> */}
+          </>
           <div className="current-user-container">
             {this.state.currentUser &&
               <div>
@@ -169,7 +168,7 @@ class PenPals extends React.Component {
                     <h3>{this.state.currentUser.userData.firstName}</h3>
                     <p>Teaching:{this.state.currentUser.userData.langFluent}</p>
                     <p>Interested in learning:{this.state.currentUser.userData.langInterested}</p>
-                    {/* <Button variant="outline-light" id="custombtn" onClick={this.handleShow}>Edit Profile</Button> */}
+                    <Button variant="outline-light" id="custombtn" onClick={this.handleShow}>Edit Profile</Button>
                 </div>
               </div>
             }
