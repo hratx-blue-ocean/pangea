@@ -43,21 +43,24 @@
   display: flex;
   width: 100%;
 }
- 
+
 .user-info h4 {
   margin: 0;
 }
+
 .user-info p{
   margin-top: 7px;
   color: #676767;
   font-size: 14px;
 }
+
 .user-action {
   width: 25%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .user-action button {
   background-color: transparent;
   color: #0073b1;
@@ -69,12 +72,14 @@
   border-radius: 2px;
   cursor: pointer;
 }
+
 .profileBtn {
   margin-top:10px;
   color:#0073b1;
   border-color: #0073b1;
   border-radius: 2px;
 } 
+
 .profileBtn:hover {
   color:lightgray;
   background-color: #0073b1;
