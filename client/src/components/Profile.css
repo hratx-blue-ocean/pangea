@@ -2,6 +2,10 @@ body {
   background-color: #F5F5F5;
 }
 
+.btn {
+  font-weight: 650;
+}
+
 li {
   list-style-type: none;
 }
@@ -14,7 +18,7 @@ li {
   display: flex;
   align-items: center;
   height: 52px;
-  background-color: #283E4A;
+  background-color: #214365;
   margin-bottom: 50px;
 }
 .navbar-list {
@@ -186,4 +190,9 @@ li {
 #calendar {
   margin: 20px auto 0px;
   width: 60%;
+}
+
+a:hover {
+  color: #429cff!important;
+  text-decoration: blink!important;
 }
