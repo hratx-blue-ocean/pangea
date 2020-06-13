@@ -16,7 +16,11 @@ const Profile = props => {
     <div>
       <Router>
         <nav className="navbar">
+        <a className="navbar-brand"><img src="pangaea.png" className="logo"></img></a>
           <ul className="navbar-list">
+          <li className="navbar-item">
+                <Link to={{ pathname: "/"}} className="navbar-link">Home</Link>
+            </li>
             <li className="navbar-item">
               <Link to={{ pathname: "/penpals", state: {userData} }} className="navbar-link" >My Pen Pals</Link>
             </li>
@@ -24,11 +28,11 @@ const Profile = props => {
                 <Link to={{ pathname: "/chat", state: {userData} }} className="navbar-link">Chat</Link>
             </li>
           </ul>
+          <a className="navbar-logout" href="/"><i className="logout fa fa-sign-out"></i></a>
         </nav>
         <Route path="/penpals" component={PenPals}/>
         <Route path="/chat" component={Chat}/>
       </Router>
-      
       <Calendar userId={userData._id} events={userData.events}/>
     </div>
   )
