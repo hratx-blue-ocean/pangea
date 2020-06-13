@@ -1,10 +1,10 @@
 # Download base image ubuntu 16.04
-FROM alpine:3.7
+FROM node:10
 
 
 # Update ubuntu and install node and npm
-RUN apk update
-RUN apk add --update nodejs nodejs-npm
+# RUN apk update
+# RUN apk add --update nodejs nodejs-npm
 
 WORKDIR /pangea
 

@@ -1,11 +1,3 @@
-# Welcome to Blue Ocean!
-Congratulations and welcome to your first day at Blue Ocean! We are literally an underwater agile software development company.  
-
-Let's begin our tour (don't blink!)...
-
-Trello Board: https://trello.com/b/1Ry424Xs/hratx40-blue-ocean
-
-How do you feel today? [![Build Status](https://travis-ci.com/hratx39-blue-ocean/deep-dive.svg?branch=master)](https://travis-ci.com/hratx39-blue-ocean/deep-dive)
 
 By the end of this sprint, be sure to replace your readme and use this template as a guideline:
 [Readme Template](https://github.com/hratx-blue-ocean/reading/blob/master/template-readme.md)
