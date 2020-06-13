@@ -15,7 +15,6 @@ export default class Home extends Component {
       loggedIn: false,
       userData: {}
     };
-
     this.profile = this.profile.bind(this);
   }
 

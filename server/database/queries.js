@@ -56,9 +56,22 @@ const createEvent = (userId, callback) => {
     })
 };
 
+const updateUser = (username, userObj, callback) => {
+  console.log("update User querey");
+  
+  users.findOneAndUpdate({username: username}, userObj, {useFindAndModify: false}, (err, data) => {
+    if (err) {
+      console.log("Could not update user in DB")
+      callback(err, null)
+    } else {
+      callback(null, data)
+    }
+  })
+};
 module.exports ={
   createEvent,
   createUser,
   findUser,
-  findUserByLang
+  findUserByLang,
+  updateUser
 }

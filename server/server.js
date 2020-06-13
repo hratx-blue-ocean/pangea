@@ -99,6 +99,17 @@ app.post('/api/createEvent', function (req, res) {
   })
 });
 
+app.post('/api/updateUser', function (req, res) {
+  console.log(req.body, 'is req.body working?')
+  queries.updateUser(req.body.username, req.body, (err, data) => {
+    if (err) {
+      res.status(500).send("error updating user in server")
+   } else {
+      res.send("user updated!");
+    }
+  })
+});
+
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
