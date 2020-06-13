@@ -80,7 +80,7 @@ app.get('/api/login/:username/:password', (req, res) => {
   // Finds all users by fluent language *WORKS*
 app.get('/api/findUserByLang/:lang', (req, res) => {
     queries.findUserByLang(req.params.lang, (err, data) => {
-      if (data.length === 0 || err) {
+      if (err) {
         res.status(500).send("Error finding users in DB")
       } else {
         res.send(data);

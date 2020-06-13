@@ -165,8 +165,8 @@ class PenPals extends React.Component {
             </picture>
                 <div className="current-user-info">
                     <h3>{this.state.currentUser.userData.firstName}</h3>
-                    <p>Teaching:{this.state.currentUser.userData.langFluent}</p>
-                    <p>Interested in learning:{this.state.currentUser.userData.langInterested}</p>
+                    <p>Teaching: {this.state.currentUser.userData.langFluent}</p>
+                    <p>Learning: {this.state.currentUser.userData.langInterested}</p>
                     <Button variant="outline-light" id="custombtn" onClick={this.handleShow}>Edit Profile</Button>
                 </div>
               </div>
@@ -184,8 +184,8 @@ class PenPals extends React.Component {
                       </picture>
                       <div className="user-info-container">
                           <div className="user-info">
-                              <h4>{user.firstName}</h4>
-                              <p>{user.lastName}</p>
+                              <h5>{user.firstName}  {user.lastName}</h5>
+                              <p>Teaching: {user.langFluent}</p>
                           </div>
                           <div className="user-action">
                               <button onClick={(userId) => this.handleClick(user._id)}>Message</button>
