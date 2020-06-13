@@ -30,17 +30,17 @@ const Login = props => {
     if (form.checkValidity() === false) {
       event.stopPropagation();
     }
-    
+
     setValidated(true);
 
     if (validateForm()) {
       login();
     }
   }
-  
+
   const login = () => {
-    
-    axios.get(`http://localhost:9000/api/login/${email}/${password}`)
+
+    axios.get(`http://pangea-env.eba-8xp63xtj.us-east-2.elasticbeanstalk.com/api/login/${email}/${password}`)
       .then(( {data} ) => {
         props.login(data[0])
       })
@@ -54,7 +54,7 @@ const Login = props => {
     <>
       <Button variant='outline-light' id='custombtn customwhite'  onClick={handleShow}>Login</Button>
 
-      <Modal show={show} onHide={handleClose}> 
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
