@@ -14,7 +14,7 @@ Visit our website here: [www.pangaea.com](http://pangea-env.eba-8xp63xtj.us-east
 
 Our team of software engineers was approached by a client who asked us to build what would become the Pangaea web application. We were given feedback throughout and two weeks to initially deploy the application.
 
-We chose a monolithic architecture. Below are links to our documentation to our process, user stories, technology stack, instructions for getting started, our workflow and ticketing approach, and team composition. 
+We chose a monolithic architecture. Below are links to our documentation to our process, user stories, technology stack, instructions for getting started, our workflow and ticketing approach, and team composition.
 
 
 # Table of Contents
@@ -24,19 +24,19 @@ We chose a monolithic architecture. Below are links to our documentation to our 
   - [WorkFlow and Ticketing](#work-flow-and-ticketing)
   - [Getting Started](#getting-started)
   - [Contributors](#contributors)
-  
+
 # Demo
-<img src="https://thumbs.gfycat.com/AnxiousFlimsyElver-size_restricted.gif" height=500px>&nbsp;&nbsp;<img src="https://thumbs.gfycat.com/AmazingJovialAoudad-size_restricted.gif" height=500px>
-&nbsp;&nbsp;<img src="https://thumbs.gfycat.com/MixedSeparateGraywolf-size_restricted.gif" height=500px>
+<img src="https://thumbs.gfycat.com/CreativeDecimalGalah-size_restricted.gif" height=500px>&nbsp;&nbsp;<img src="https://thumbs.gfycat.com/AltruisticFarawayBlackrussianterrier-size_restricted.gif" height=500px>
+&nbsp;&nbsp;<img src="https://thumbs.gfycat.com/AdmiredFluffyArrowworm-size_restricted.gif" height=500px>
 
 # User Stories
 ## Implement
 Based on the request of our client, we defined the following user stories:
-- As a user, I want to be able to create an account 
+- As a user, I want to be able to create an account
 - As a user, I want to see other user profiles who speak the language I want to learn
 - As a user, I want to chat with other users in real time
 - As a user, I want to want to be able to log out
-- As a user, I want to be able to use a calendar to log meetup times 
+- As a user, I want to be able to use a calendar to log meetup times
 - As a user, I want to edit the language I’m interested in
 - As a user, I want to set my fluent languages
 - As a user, I want to be notified when my username and password are incorrect
@@ -48,7 +48,7 @@ Based on the request of our client, we defined the following user stories:
 - As a user, I want to add more content to my profile
 - As a user, I want to have calendar notifications
 - As a user, I want to use this as a mobile app
-- As a user, I want to avoid logging into the website each time I visit 
+- As a user, I want to avoid logging into the website each time I visit
 - As a user, I want to get an overview of Pangaea’s website when I visit the site
 - As a user, I want to translate incoming messages
 - As a user, I want to see a user is online
@@ -72,7 +72,7 @@ Based on the request of our client, we defined the following user stories:
   <tr>
     <td align="center"><img src="https://cdn.worldvectorlogo.com/logos/react-router.svg" alt="React Router" title="React Router" width="70px"/></td>
     <td align="center"><img src="https://buttercms.com/static/images/tech_banners/ExpressJS.png" alt="Express" title="Express" width="60px"/></td>
-<--        <td align="center"><img src="https://miro.medium.com/max/600/1*i37IyHf6vnhqWIA9osxU3w.png" alt="Jest" title="Jest" width="40px"/></td> -->
+       <td align="center"><img src="https://miro.medium.com/max/600/1*i37IyHf6vnhqWIA9osxU3w.png" alt="Jest" title="Jest" width="40px"/></td>
   </tr>
   <tr>
     <td align="center"><img src="https://fuzati.com/wp-content/uploads/2016/12/Bootstrap-Logo.png" alt="Bootstrap" title="Bootstrap" width="60px"/></td>
@@ -82,11 +82,11 @@ Based on the request of our client, we defined the following user stories:
 
 # Work Flow and Ticketing
 ## Work Flow
-We followed a Git workflow to ensure work is accomplished in a consistent and productive manner. 
+We followed a Git workflow to ensure work is accomplished in a consistent and productive manner.
 ![](https://s7.gifyu.com/images/ezgif.com-video-to-gif449598c0198a32b9.gif)
 
 ## Ticketing
-For ticketing and allocation of work, we followed an agile methodology. We created tickets in Trello with six basic states: 
+For ticketing and allocation of work, we followed an agile methodology. We created tickets in Trello with six basic states:
 - Important Reference Info - Planning and universal information that is commonly referenced
 - Back Burner - work that will be tackled in future sprints
 - Sprint Plan - work that will be finished in current sprint
