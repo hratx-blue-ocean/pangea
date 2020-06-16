@@ -26,8 +26,7 @@ We chose a monolithic architecture. Below are links to our documentation to our 
   - [Contributors](#contributors)
 
 # Demo
-<img src="https://thumbs.gfycat.com/CreativeDecimalGalah-size_restricted.gif" height=500px>&nbsp;&nbsp;<img src="https://thumbs.gfycat.com/AltruisticFarawayBlackrussianterrier-size_restricted.gif" height=500px>
-&nbsp;&nbsp;<img src="https://thumbs.gfycat.com/AdmiredFluffyArrowworm-size_restricted.gif" height=500px>
+<img src="https://i.gyazo.com/31336df59aacafc9e6e3c518b2e32cd0.gif" height=500px>
 
 # User Stories
 ## Implement
