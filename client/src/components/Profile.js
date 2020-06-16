@@ -39,8 +39,3 @@ const Profile = props => {
 }
 
 export default Profile;
-
-/*
- /api/findUser queries by username
-/api/createUser recieves req.body
- */
