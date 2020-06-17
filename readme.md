@@ -26,7 +26,9 @@ We chose a monolithic architecture. Below are links to our documentation to our 
   - [Contributors](#contributors)
 
 # Demo
-<img src="https://i.gyazo.com/31336df59aacafc9e6e3c518b2e32cd0.gif" height=500px>
+<p align='center'>
+  <img src="https://i.gyazo.com/31336df59aacafc9e6e3c518b2e32cd0.gif" width='100%'>
+</p>
 
 # User Stories
 ## Implement
