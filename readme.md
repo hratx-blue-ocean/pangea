@@ -84,7 +84,9 @@ Based on the request of our client, we defined the following user stories:
 # Work Flow and Ticketing
 ## Work Flow
 We followed a Git workflow to ensure work is accomplished in a consistent and productive manner.
-<img src="https://s7.gifyu.com/images/ezgif.com-video-to-gif449598c0198a32b9.gif" height=500px>
+<p align='center'>
+  <img src="https://s7.gifyu.com/images/ezgif.com-video-to-gif449598c0198a32b9.gif" width='100%'>
+</p>
 
 ## Ticketing
 For ticketing and allocation of work, we followed an agile methodology. We created tickets in Trello with six basic states:
