@@ -86,7 +86,7 @@ Based on the request of our client, we defined the following user stories:
 We followed a Git workflow to ensure work is accomplished in a consistent and productive manner.
 <a href="https://gifyu.com/image/uucy"><img src="https://s7.gifyu.com/images/ezgif.com-video-to-gif449598c0198a32b9.gif" alt="ezgif.com-video-to-gif449598c0198a32b9.gif" border="0" /></a>
 <p align='center'>
-  <img src="https://s7.gifyu.com/images/ezgif.com-video-to-gif449598c0198a32b9.gif" width='100%'>
+  <img src="https://media.giphy.com/media/eLjyvRPtUR4GLo08z1/giphy.gif" width='100%'>
 </p>
 
 ## Ticketing
