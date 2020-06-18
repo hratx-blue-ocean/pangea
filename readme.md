@@ -124,4 +124,4 @@ npm run start:dev
 <span>
 
 # Contributors
-[Corry Harris](https://github.com/CoryLHarris), [Rex Loyer](https://github.com/Rex-Loyer), [Brian McHugh](https://github.com/Brian-McHugh), [Timothy Black](https://github.com/talltimblack), [Kody Maus](https://github.com/auto-mausx), [Wilson Tao](https://github.com/wilson-tao), [Blake Guidry](https://github.com/blakeGuidry), [George Pazdral](https://github.com/JorgeAntonio512)
+[Cory Harris](https://github.com/CoryLHarris), [Rex Loyer](https://github.com/Rex-Loyer), [Brian McHugh](https://github.com/Brian-McHugh), [Timothy Black](https://github.com/talltimblack), [Kody Maus](https://github.com/auto-mausx), [Wilson Tao](https://github.com/wilson-tao), [Blake Guidry](https://github.com/blakeGuidry), [George Pazdral](https://github.com/JorgeAntonio512)
